@@ -1,2 +1,2 @@
-# Web2Milestone6DRV
+# AppDevMilestone6DRV
 The Repo for the wpf conversion of the calendar api
