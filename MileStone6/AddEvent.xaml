@@ -29,13 +29,13 @@
                         </Grid.RowDefinitions>
 
                         <TextBlock FontSize="25" Margin="15">Details:</TextBlock>
-                        <TextBox x:Name="Details" Grid.Column="1" Margin="10" FontSize="15" TextAlignment="Center" VerticalContentAlignment="Center"></TextBox>
+                        <TextBox x:Name="eventDetails" Grid.Column="1" Margin="10" FontSize="15" TextAlignment="Center" VerticalContentAlignment="Center"></TextBox>
 
                         <TextBlock FontSize="25" Margin="15" Grid.Row="1">Category:</TextBlock>
-                        <TextBox x:Name="eventcategory" Grid.Row="1" Grid.Column="1" Margin="10" FontSize="15" TextAlignment="Center" VerticalContentAlignment="Center"></TextBox>
+                        <TextBox x:Name="eventCategory" Grid.Row="1" Grid.Column="1" Margin="10" FontSize="15" TextAlignment="Center" VerticalContentAlignment="Center"></TextBox>
                         
                         <TextBlock FontSize="25" Margin="15" Grid.Row="2">Date:</TextBlock>
-                        <TextBox x:Name="eventdate" Grid.Row="2" Grid.Column="1" Margin="10" FontSize="15" TextAlignment="Center" VerticalContentAlignment="Center"></TextBox>
+                        <TextBox x:Name="eventDate" Grid.Row="2" Grid.Column="1" Margin="10" FontSize="15" TextAlignment="Center" VerticalContentAlignment="Center"></TextBox>
                         
                         <TextBlock FontSize="25" Margin="15" Grid.Row="3">Duration:</TextBlock>
                         <TextBox x:Name="eventDuration" Grid.Row="3" Grid.Column="1" Margin="10" FontSize="15" TextAlignment="Center" VerticalContentAlignment="Center"></TextBox>

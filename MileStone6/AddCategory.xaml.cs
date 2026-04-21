@@ -18,5 +18,10 @@ namespace MileStone6
             mw.Show();
             this.Close();
         }
+
+        private void Submit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
