@@ -27,5 +27,12 @@ namespace MileStone6
             w.Show();
             this.Close();           
         }
+
+        private void ToAddEventButton_Click(object sender, RoutedEventArgs e)
+        {
+            AddEvent w = new AddEvent();
+            w.Show();
+            this.Close();
+        }
     }
 }

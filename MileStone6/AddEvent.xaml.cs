@@ -23,5 +23,11 @@ namespace MileStone6
         {
             InitializeComponent();
         }
+        private void CancelButton_CLicked(object sender, RoutedEventArgs e)
+        {
+            MainWindow mw = new MainWindow();
+            mw.Show();
+            this.Close();
+        }
     }
 }
