@@ -29,18 +29,18 @@
                         </Grid.RowDefinitions>
 
                         <TextBlock FontSize="25" Margin="15">Details:</TextBlock>
-                        <TextBox x:Name="Details" Grid.Column="1" Margin="10" FontSize="15" TextAlignment="Center" VerticalContentAlignment="Center"></TextBox>
+                        <TextBox x:Name="eventDetails" Grid.Column="1" Margin="10" FontSize="15" TextAlignment="Center" VerticalContentAlignment="Center"></TextBox>
 
                         <TextBlock FontSize="25" Margin="15" Grid.Row="1">Category:</TextBlock>
-                        <TextBox x:Name="eventcategory" Grid.Row="1" Grid.Column="1" Margin="10" FontSize="15" TextAlignment="Center" VerticalContentAlignment="Center"></TextBox>
+                        <ComboBox x:Name="eventCategory" Grid.Column="1" Grid.Row="1" Margin="10" FontSize="15"  VerticalContentAlignment="Center"></ComboBox>
                         
                         <TextBlock FontSize="25" Margin="15" Grid.Row="2">Date:</TextBlock>
-                        <TextBox x:Name="eventdate" Grid.Row="2" Grid.Column="1" Margin="10" FontSize="15" TextAlignment="Center" VerticalContentAlignment="Center"></TextBox>
+                        <TextBox x:Name="eventDate" Grid.Row="2" Grid.Column="1" Margin="10" FontSize="15" TextAlignment="Center" VerticalContentAlignment="Center"></TextBox>
                         
                         <TextBlock FontSize="25" Margin="15" Grid.Row="3">Duration:</TextBlock>
                         <TextBox x:Name="eventDuration" Grid.Row="3" Grid.Column="1" Margin="10" FontSize="15" TextAlignment="Center" VerticalContentAlignment="Center"></TextBox>
 
-                        <Button x:Name="Submit" Background="LightBlue" Grid.Row="4" Grid.ColumnSpan="2" FontSize="20" Margin="10" Width="200" Padding="10">Add</Button>
+                        <Button x:Name="Submit" Background="LightBlue" Grid.Row="4" Grid.ColumnSpan="2" FontSize="20" Margin="10" Width="200" Padding="10" Click="Submit_Click">Add</Button>
                     </Grid>
                 </StackPanel>
             </GroupBox>
