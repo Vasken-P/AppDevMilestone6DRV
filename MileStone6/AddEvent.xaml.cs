@@ -1,16 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
 
 namespace MileStone6
 {
@@ -19,15 +7,32 @@ namespace MileStone6
     /// </summary>
     public partial class AddEvent : Window
     {
-        public AddEvent()
+        Presenter p;
+        public AddEvent(Presenter p)
         {
+            this.p = p;
             InitializeComponent();
+            eventCategory.ItemsSource = p.GetCategoryNames();
         }
         private void CancelButton_CLicked(object sender, RoutedEventArgs e)
         {
             MainWindow mw = new MainWindow();
             mw.Show();
             this.Close();
+        }
+
+        private void Submit_Click(object sender, RoutedEventArgs e)
+        {
+
+            if (!string.IsNullOrEmpty(eventDetails.Text) && eventCategory.SelectedIndex != -1 && !string.IsNullOrEmpty(eventDate.Text) && !string.IsNullOrEmpty(eventDuration.Text))
+            {
+                p.AddEvent(DateTime.Parse(eventDate.Text), eventCategory.SelectedIndex, int.Parse(eventDuration.Text), eventDetails.Text);
+            }
+            else
+            {
+                return;
+            }
+
         }
     }
 }

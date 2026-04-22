@@ -31,12 +31,7 @@
                         <TextBox x:Name="CategoryDescription" Grid.Column="1" Margin="10" FontSize="15" TextAlignment="Center" VerticalContentAlignment="Center"></TextBox>
 
                         <TextBlock FontSize="25" Grid.Row="2" Margin="15">Type:</TextBlock>
-                        <ComboBox x:Name="CategoryType" Grid.Column="1" Grid.Row="2" Margin="10" FontSize="15"  VerticalContentAlignment="Center">
-                            <ComboBoxItem Content="Event"></ComboBoxItem>
-                            <ComboBoxItem Content="AllDayEvent"></ComboBoxItem>
-                            <ComboBoxItem Content="Availability"></ComboBoxItem>
-                            <ComboBoxItem Content="Holiday"></ComboBoxItem>
-                        </ComboBox>
+                        <ComboBox x:Name="CategoryTypes" Grid.Column="1" Grid.Row="2" Margin="10" FontSize="15"  VerticalContentAlignment="Center"></ComboBox>
                         <Button x:Name="Submit" Background="LightBlue" Grid.Row="3" Grid.ColumnSpan="2" FontSize="20" Margin="10" Width="200" Padding="10" Click="Submit_Click">Add</Button>
                     </Grid>
                 </StackPanel>
