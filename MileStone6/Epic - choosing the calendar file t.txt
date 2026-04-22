@@ -1,0 +1,47 @@
+Epic - choosing the calendar file to work with
+s3: 5
+s4: 4
+s5: 7 <-
+
+Epic - Closing the application
+s2: 13
+
+Epic - Navigation
+s2: 8 <-
+s3: 1
+s4: 7
+
+Epic - entering events into the calendar
+s3: 10 <-
+s4: 2
+s5: 11
+s6: 8
+s7: 5
+
+s9: 10
+s10: 10
+s11: 8
+s12: 5
+s13: 3
+s14: 7
+s15: 11
+
+Epic - creating a new category
+s1.b: 4
+
+stories (mid diff):
+
+Epic - choosing the calendar file to work with
+s5 <-
+
+Epic - Navigation
+s2 <-
+s4
+
+Epic - entering events into the calendar
+s3 <-
+s6
+s9 <<--
+s10 <<--
+s11 <<--
+s14 <<--
