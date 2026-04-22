@@ -20,7 +20,6 @@ namespace MileStone6
         void LoadLastUsedFile();
 
 
-
         // add event
         string GetEventDescription();
         string GetStartDate();
