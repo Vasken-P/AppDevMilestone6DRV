@@ -15,6 +15,7 @@ namespace MileStone6
 
         public Presenter()
         {
+           
             Calendar = new HomeCalendar("C:\\Users\\vaske\\OneDrive\\Desktop\\AppDev\\AppDevMilestone6DRV\\MileStone6\\DatabaseFiles\\TestDBFile.db");
             typenames = new List<string>();
             categorynames = new List<string>();

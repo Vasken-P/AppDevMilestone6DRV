@@ -12,37 +12,21 @@ namespace MileStone6
         void ShowMessage(string message);
         void Close();
 
-        // file/startup
-        void DisplayCurrentFile(string fileName);
-        void GetFileName();
-        void GetFolderName();
-        void OpenFileExplorer();
-        void LoadLastUsedFile();
 
+        // add category
+        string GetDescription();
+        void ClearFields();
 
         // add event
         string GetEventDescription();
-        string GetStartDate();
-        string GetStartTime();
-        string GetCategory();
-        int GetRepeatDays();
+        //string GetStartDate();
+        //string GetStartTime();
+        //string GetCategory();
         void SetDefaultDate(string date);
         void SetDefaultTime(string time);
-        void SetCategories(List<string> categories);
+        //void SetCategories(List<string> categories);
         void ResetEventFields();
-        void KeepCategoryAndDate();
-
-
-        // add category
-        string GetCategoryDescription();
-        void ClearCategoryFields();
-
-        // navigation
-        void NavigateToAddEvent();
-        void NavigateToAddCategory();
-
-        // closing
-        void ConfirmUnsavedChanges();
+        void DisplayCurrentFile(string fileName);
 
 
 
