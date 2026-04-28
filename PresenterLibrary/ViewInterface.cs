@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MileStone6
 {
-    internal interface ViewInterface
+    public interface ViewInterface
     {
         // general basic things for the view
         void ShowMessage(string message);
@@ -22,25 +22,17 @@ namespace MileStone6
 
 
         // add event
-        string GetEventDescription();
-        string GetStartDate();
-        string GetStartTime();
-        string GetCategory();
         int GetRepeatDays();
         void SetDefaultDate(string date);
         void SetDefaultTime(string time);
         void SetCategories(List<string> categories);
-        void ResetEventFields();
+        void ResetFields();
         void KeepCategoryAndDate();
 
 
         // add category
         string GetCategoryDescription();
         void ClearCategoryFields();
-
-        // navigation
-        void NavigateToAddEvent();
-        void NavigateToAddCategory();
 
         // closing
         void ConfirmUnsavedChanges();
