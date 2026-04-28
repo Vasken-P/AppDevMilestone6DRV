@@ -29,7 +29,6 @@ namespace MileStone6
         void DisplayCurrentFile(string fileName);
 
 
-        // if ( i = 0 ; i < j; i++) so like we are making an if statment right now to like check things out and to work stuff out making things work out to be perfect and great to make sureb that everything works out 
 
     }
 }

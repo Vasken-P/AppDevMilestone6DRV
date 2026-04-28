@@ -5,20 +5,18 @@ namespace MileStone6
     public class Presenter
     {
         private HomeCalendar _calendar;
-        private List<string> typenames;
-        private List<string> categorynames;
+        private List<string> _typenames;
+        private List<string> _categorynames;
         public HomeCalendar Calendar
         {
-            get { return _calendar; }
-            set { _calendar = value; }
+           get { return _calendar; }
         }
 
-        public Presenter()
+        public Presenter(string filepath)
         {
-           
-            Calendar = new HomeCalendar("C:\\Users\\vaske\\OneDrive\\Desktop\\AppDev\\AppDevMilestone6DRV\\MileStone6\\DatabaseFiles\\TestDBFile.db");
-            typenames = new List<string>();
-            categorynames = new List<string>();
+            _calendar = new HomeCalendar(filepath);
+            _typenames = new List<string>();
+            _categorynames = new List<string>();
         }
         public void AddCategory(string description, int type)
         {
@@ -39,21 +37,21 @@ namespace MileStone6
         }
         public List<string> GetCategoryTypeNames()
         {
-            typenames.Clear();
+            _typenames.Clear();
             foreach (string type in Enum.GetNames<Category.CategoryType>())
             {
-                typenames.Add(type);
+                _typenames.Add(type);
             }
-            return typenames;
+            return _typenames;
         }
         public List<string> GetCategoryNames()
         {
-            categorynames.Clear();
+            _categorynames.Clear();
             foreach (Category category in Calendar.categories.List())
             {
-                categorynames.Add(category.Description);
+                _categorynames.Add(category.Description);
             }
-            return categorynames;
+            return _categorynames;
         }
     }
 }
