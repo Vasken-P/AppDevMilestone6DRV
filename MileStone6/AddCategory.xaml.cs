@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace MileStone6
+namespace MileStone6Presenter
 {
     /// <summary>
     /// Interaction logic for Window1.xaml

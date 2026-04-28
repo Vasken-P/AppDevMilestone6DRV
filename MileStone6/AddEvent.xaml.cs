@@ -1,7 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
-using MileStone6;
-namespace MileStone6
+namespace MileStone6Presenter
 {
     /// <summary>
     /// Interaction logic for AddEvent.xaml
@@ -9,12 +8,12 @@ namespace MileStone6
     public partial class AddEvent : Window, ViewInterface
     {
         private string defaultDate = DateTime.Today.ToString("dd-MM-yyyy");
-
-        public Presenter p;
+        private readonly Presenter p;
         public AddEvent()
-        {
-            p = new Presenter(this);
+        {    
             InitializeComponent();
+            
+            p = new Presenter(this);
             eventCategory.ItemsSource = p.GetCategoryNames();
         }
         private void CancelButton_CLicked(object sender, RoutedEventArgs e)

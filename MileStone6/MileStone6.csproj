@@ -9,17 +9,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.QualityTools.Testing.Fakes" Version="17.5.0-beta.23060.1" />
     <PackageReference Include="System.Data.SQLite.Core" Version="1.0.119" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\PresenterLibrary\PresenterLibrary.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="HomeCalendar">
-      <HintPath>dlls\CalendarModel\HomeCalendar.dll</HintPath>
-    </Reference>
   </ItemGroup>
 
 </Project>

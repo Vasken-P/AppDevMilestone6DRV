@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MileStone6
+namespace MileStone6Presenter
 {
     public interface ViewInterface
     {
