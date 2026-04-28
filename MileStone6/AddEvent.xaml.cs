@@ -48,8 +48,7 @@ namespace MileStone6
             }
             else
             {
-                p.AddEvent(DateTime.Parse(eventDate.SelectedDate.ToString()), eventCategory.SelectedIndex, int.Parse(eventDuration.Text), eventDetails.Text);
-              
+                p.AddEvent(DateTime.Parse(eventDate.SelectedDate.ToString()!), eventCategory.SelectedIndex, int.Parse(eventDuration.Text), eventDetails.Text);            
             }
 
         }
