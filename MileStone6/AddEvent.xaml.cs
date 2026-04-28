@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
+using PresenterLibrary;
 namespace MileStone6
 {
     /// <summary>
@@ -7,6 +8,8 @@ namespace MileStone6
     /// </summary>
     public partial class AddEvent : Window, ViewInterface
     {
+        private string defaultDate = DateTime.Today.ToString("dd-MM-yyyy");
+
         public Presenter p;
         public AddEvent()
         {
@@ -46,6 +49,7 @@ namespace MileStone6
             else
             {
                 p.AddEvent(DateTime.Parse(eventDate.SelectedDate.ToString()), eventCategory.SelectedIndex, int.Parse(eventDuration.Text), eventDetails.Text);
+              
             }
 
         }
@@ -59,7 +63,7 @@ namespace MileStone6
 
         public void ShowMessage(string message)
         {
-            ErrorBox.Text = message;
+            throw new NotImplementedException();
         }
 
         public void DisplayCurrentFile(string fileName)
@@ -107,9 +111,13 @@ namespace MileStone6
             throw new NotImplementedException();
         }
 
-        public void ResetEventFields()
+        public void ResetFields()
         {
-            throw new NotImplementedException();
+            eventCategory.SelectedIndex = -1;
+            eventDetails.Text = string.Empty;
+            eventDate.SelectedDate = DateTime.Parse(defaultDate);
+            eventDuration.Text = string.Empty;
+
         }
 
         public void KeepCategoryAndDate()

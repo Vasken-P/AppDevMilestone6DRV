@@ -1,4 +1,5 @@
 ﻿using Calendar;
+using MileStone6;
 
 namespace MileStone6
 {
@@ -24,6 +25,8 @@ namespace MileStone6
         public void AddCategory(string description, int type)
         {
             Calendar.categories.Add(description, (Category.CategoryType)type);
+            _view.ShowMessage(description + " category has been added");
+            _view.ResetFields();
         }
         public void RemoveCategory(int id)
         {
@@ -34,6 +37,7 @@ namespace MileStone6
         {
             Calendar.events.Add(startingTime, categoryID, durationInMinutes, details);
             _view.ShowMessage(details+" event has been added");
+            _view.ResetFields();
         }
         public void RemoveEvent(int id)
         {

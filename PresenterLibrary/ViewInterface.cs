@@ -26,7 +26,7 @@ namespace MileStone6
         void SetDefaultDate(string date);
         void SetDefaultTime(string time);
         void SetCategories(List<string> categories);
-        void ResetEventFields();
+        void ResetFields();
         void KeepCategoryAndDate();
 
 

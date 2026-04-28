@@ -1,4 +1,4 @@
-namespace presenterTester
+namespace TestThePresenter
 {
     public class UnitTest1
     {

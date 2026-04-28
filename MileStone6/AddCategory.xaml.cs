@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using System.Windows.Controls;
 
 namespace MileStone6
 {
@@ -65,27 +66,13 @@ namespace MileStone6
             throw new NotImplementedException();
         }
 
-        public void ResetEventFields()
+        public void ResetFields()
         {
-            throw new NotImplementedException();
+            CategoryDescription.Text = string.Empty;
+            CategoryTypes.SelectedIndex = -1;
         }
 
         public void SetCategories(List<string> categories)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void SetDefaultDate(string date)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void SetDefaultTime(string time)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ShowMessage(string message)
         {
             throw new NotImplementedException();
         }
@@ -99,14 +86,24 @@ namespace MileStone6
 
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(CategoryDescription.Text) && CategoryTypes.SelectedIndex != -1)
+            if (string.IsNullOrEmpty(CategoryDescription.Text))
             {
-                p.AddCategory(CategoryDescription.Text, CategoryTypes.SelectedIndex);
+                showerrorinbox(CategoryDescription, "Description cannot be void");
+            }
+            else if (CategoryTypes.SelectedIndex == -1)
+            {
+                showerrorinbox(CategoryTypes, "Category cannot be void");
+                return;
             }
             else
             {
-                return;
+                p.AddCategory(CategoryDescription.Text, CategoryTypes.SelectedIndex);
             }
+        }
+        private void showerrorinbox(Control ct, string message)
+        {
+            ErrorBox.Text = message;
+            //BorderBrush = "Crimson" BorderThickness = "5"
         }
     }
 }
