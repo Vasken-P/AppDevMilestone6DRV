@@ -1,5 +1,4 @@
 ﻿using Calendar;
-using MileStone6;
 
 namespace MileStone6
 {
