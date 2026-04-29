@@ -12,7 +12,7 @@ namespace MileStone6Presenter
 
         public Presenter(ViewInterface v)
         {
-            _calendar = new HomeCalendar("TestDBFile.db");)
+            _calendar = new HomeCalendar("TestDBFile.db");
             _typenames = new List<string>();
             _categorynames = new List<string>();
             _view = v;
@@ -37,6 +37,9 @@ namespace MileStone6Presenter
         //    }
 
         //}
+        //========================
+        // CATEGORY
+        //========================
 
         public void AddCategory(string description, int type)
         {
@@ -72,35 +75,34 @@ namespace MileStone6Presenter
             _calendar.categories.Delete(id);
 
         }
-        public void AddEvent(DateTime startingTime, int categoryID, string durationInMinutes, string details)
-        {
-            if (string.IsNullOrEmpty(details))
-            {
-                _view.ShowError("Details cannot be void");
-            }
-            else if (categoryID == -1)
-            {
-                _view.ShowError("Category cannot be void");
-                return;
-            }
-            else if (startingTime == null)
-            {
-                _view.ShowError("Date cannot be void");
-                return;
-            }
-            else if (!int.TryParse(durationInMinutes, out int duration))
-            {
-                _view.ShowError("Duration cannot be void or a non integer");
-                return;
-            }
-            _calendar.events.Add(startingTime, categoryID, int.Parse(durationInMinutes), details);
-            _view.ShowMessage(details + " event has been added");
-            _view.ResetFields();
-        }
-        public void RemoveEvent(int id)
-        {
-            _calendar.events.Delete(id);
-        }
+        //public void AddEvent(DateTime startingTime, int categoryID, string durationInMinutes, string details)
+        //{
+        //    if (string.IsNullOrEmpty(details))
+        //    {
+        //        _view.ShowError("Details cannot be void");
+        //    }
+        //    else if (categoryID == -1)
+        //    {
+        //        _view.ShowError("Category cannot be void");
+        //        return;
+        //    }
+        //    else if (startingTime == null)
+        //    {
+        //        _view.ShowError("Date cannot be void");
+        //        return;
+        //    }
+        //    else if (!int.TryParse(durationInMinutes, out int duration))
+        //    {
+        //        _view.ShowError("Duration cannot be void or a non integer");
+        //        return;
+        //    }
+        //    _calendar.events.Add(startingTime, categoryID, int.Parse(durationInMinutes), details);
+        //    _view.ShowMessage(details + " event has been added");
+        //    _view.ResetFields();
+        //}
+
+  
+  
         public List<string> GetCategoryTypeNames()
         {
             _typenames.Clear();
@@ -119,6 +121,41 @@ namespace MileStone6Presenter
             }
             return _categorynames;
         }
+      //========================
+      // EVENT
+      //========================
+        public void AddEvent(DateTime startingTime, int categoryID, string durationInMinutes, string details)
+        {
+            if (details == "")
+            {
+                _view.ShowError("Details cannot be void");
+                return;
+            }
+            if (categoryID == -1)
+            {
+                _view.ShowError("Choose a category");
+                return;
+            }
+
+            int duration;
+
+            if (!int.TryParse(durationInMinutes, out duration))
+            {
+                _view.ShowError("Duration must be an integer");
+                return;
+            }
+            _calendar.events.Add(startingTime, categoryID, duration, details);
+            _view.ShowMessage("Event added");
+            // _view.ResetFields();
+
+            _view.KeepCategoryAndDate();
+        }
+
+        public void RemoveEvent(int id)
+        {
+            _calendar.events.Delete(id);
+        }
+
 
         //for testing only
         public void CloseCalendar()
