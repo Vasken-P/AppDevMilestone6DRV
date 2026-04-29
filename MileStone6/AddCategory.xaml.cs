@@ -120,7 +120,12 @@ namespace MileStone6Presenter
 
         public void ClearCategoryFields()
         {
-            throw new NotImplementedException();
+
+            //throw new NotImplementedException();
+
+            CategoryDescription.Text = string.Empty;
+            CategoryTypes.SelectedIndex = -1;
+
         }
     }
 }
