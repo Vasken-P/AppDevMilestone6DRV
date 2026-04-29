@@ -38,11 +38,9 @@ namespace MileStone6Presenter
 
         public void ShowMessage(string message)
         {
-<<<<<<< HEAD
-            throw new NotImplementedException();
-=======
+
             MessageBox.Show(message);
->>>>>>> View
+
         }
 
         public void DisplayCurrentFile(string fileName)
@@ -101,9 +99,7 @@ namespace MileStone6Presenter
 
         public void KeepCategoryAndDate()
         {
-<<<<<<< HEAD
-            throw new NotImplementedException();
-=======
+
             int savedCategory = eventCategory.SelectedIndex;
             DateTime? savedDate = eventDate.SelectedDate;
 
@@ -113,7 +109,7 @@ namespace MileStone6Presenter
             eventCategory.SelectedIndex = savedCategory;
 
             eventDate.SelectedDate = savedDate;
->>>>>>> View
+
         }
 
         public string GetCategoryDescription()
