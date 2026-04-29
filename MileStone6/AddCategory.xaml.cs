@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 
-namespace MileStone6
+namespace MileStone6Presenter
 {
     /// <summary>
     /// Interaction logic for Window1.xaml
@@ -38,11 +38,11 @@ namespace MileStone6
         {
             if (string.IsNullOrEmpty(CategoryDescription.Text))
             {
-                showerrorinbox(CategoryDescription, "Description cannot be void");
+                ShowError("Description cannot be void");
             }
             else if (CategoryTypes.SelectedIndex == -1)
             {
-                showerrorinbox(CategoryTypes, "Category cannot be void");
+                ShowError("Category cannot be void");
                 return;
             }
             else
@@ -50,7 +50,7 @@ namespace MileStone6
                 p.AddCategory(CategoryDescription.Text, CategoryTypes.SelectedIndex);
             }
         }
-        private void showerrorinbox(Control ct, string message)
+        public void ShowError(string message)
         {
             ErrorBox.Text = message;
             //BorderBrush = "Crimson" BorderThickness = "5"

@@ -9,7 +9,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MileStone6
+namespace MileStone6Presenter
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -18,8 +18,7 @@ namespace MileStone6
     {
         
         public MainWindow()
-        {
-            
+        {   
             InitializeComponent();
         }
 

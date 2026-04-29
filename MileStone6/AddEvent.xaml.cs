@@ -1,7 +1,5 @@
 ﻿using System.Windows;
-using System.Windows.Controls;
-using MileStone6;
-namespace MileStone6
+namespace MileStone6Presenter
 {
     /// <summary>
     /// Interaction logic for AddEvent.xaml
@@ -9,12 +7,12 @@ namespace MileStone6
     public partial class AddEvent : Window, ViewInterface
     {
         private string defaultDate = DateTime.Today.ToString("dd-MM-yyyy");
-
-        public Presenter p;
+        private readonly Presenter p;
         public AddEvent()
         {
-            p = new Presenter(this);
             InitializeComponent();
+
+            p = new Presenter(this);
             eventCategory.ItemsSource = p.GetCategoryNames();
         }
         private void CancelButton_CLicked(object sender, RoutedEventArgs e)
@@ -26,35 +24,11 @@ namespace MileStone6
 
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
-            
-            if (string.IsNullOrEmpty(eventDetails.Text))
-            {
-                showerrorinbox(eventDetails, "Details cannot be void");
-            }
-            else if (eventCategory.SelectedIndex == -1)
-            {
-                showerrorinbox(eventCategory, "Category cannot be void");
-                return;
-            }
-            else if (eventDate.SelectedDate == null)
-            {
-                showerrorinbox(eventDate, "Date cannot be void");
-                return;
-            }
-            else if (!int.TryParse(eventDuration.Text, out int duration))
-            {
-                showerrorinbox(eventDuration, "Duration cannot be void or a non integer");
-                return;
-            }
-            else
-            {
-                p.AddEvent(DateTime.Parse(eventDate.SelectedDate.ToString()!), eventCategory.SelectedIndex, int.Parse(eventDuration.Text), eventDetails.Text);            
-            }
-
+            p.AddEvent(DateTime.Parse(eventDate.SelectedDate.ToString()!), eventCategory.SelectedIndex, eventDuration.Text, eventDetails.Text);
         }
 
 
-        private void showerrorinbox(Control ct, string message)
+        public void ShowError(string message)
         {
             ErrorBox.Text = message;
             //BorderBrush = "Crimson" BorderThickness = "5"

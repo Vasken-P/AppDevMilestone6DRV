@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MileStone6
+namespace MileStone6Presenter
 {
     public interface ViewInterface
     {
         // general basic things for the view
         void ShowMessage(string message);
+        void ShowError(string message);
         void Close();
 
         // file/startup
