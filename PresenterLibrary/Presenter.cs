@@ -17,26 +17,56 @@ namespace MileStone6Presenter
             _categorynames = new List<string>();
             _view = v;
         }
+        //public void AddCategory(string description, int type)
+        //{
+        //    if (string.IsNullOrEmpty(description))
+        //    {
+        //        _view.ShowError("Description cannot be void");
+        //        return;
+        //    }
+        //    else if (type == -1)
+        //    {
+        //        _view.ShowError("Category cannot be void");
+        //        return;
+        //    }
+        //    else
+        //    {
+        //        _calendar.categories.Add(description, (Category.CategoryType)type);
+        //        _view.ShowMessage(description + " category has been added");
+        //        _view.ResetFields();
+        //    }
+
+        //}
+
         public void AddCategory(string description, int type)
         {
-            if (string.IsNullOrEmpty(description))
+            if (description == "")
             {
                 _view.ShowError("Description cannot be void");
                 return;
             }
-            else if (type == -1)
+
+            if (type == -1)
             {
-                _view.ShowError("Category cannot be void");
+                _view.ShowError("Choose a type");
                 return;
             }
-            else
+
+            foreach (Category category in _calendar.categories.List())
             {
-                _calendar.categories.Add(description, (Category.CategoryType)type);
-                _view.ShowMessage(description + " category has been added");
-                _view.ResetFields();
+                if (category.Description == description)
+                {
+                    _view.ShowError("Category already exists");
+                    return;
+                }
             }
 
+            _calendar.categories.Add(description, (Category.CategoryType)type);
+
+            _view.ShowMessage("Category added");
+            _view.ResetFields();
         }
+        
         public void RemoveCategory(int id)
         {
             _calendar.categories.Delete(id);
