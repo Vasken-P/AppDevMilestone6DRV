@@ -11,7 +11,6 @@ namespace MileStone6Presenter
         public AddEvent()
         {
             InitializeComponent();
-
             p = new Presenter(this);
             eventCategory.ItemsSource = p.GetCategoryNames();
         }

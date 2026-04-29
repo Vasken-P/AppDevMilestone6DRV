@@ -7,7 +7,7 @@ namespace MileStone6Presenter
         private HomeCalendar _calendar;
         private List<string> typenames;
         private List<string> categorynames;
-        
+
 
         public Presenter(ViewInterface v)
         {
@@ -18,9 +18,23 @@ namespace MileStone6Presenter
         }
         public void AddCategory(string description, int type)
         {
-            _calendar.categories.Add(description, (Category.CategoryType)type);
-            _view.ShowMessage(description + " category has been added");
-            _view.ResetFields();
+            if (string.IsNullOrEmpty(description))
+            {
+                _view.ShowError("Description cannot be void");
+                return;
+            }
+            else if (type == -1)
+            {
+                _view.ShowError("Category cannot be void");
+                return;
+            }
+            else
+            {
+                _calendar.categories.Add(description, (Category.CategoryType)type);
+                _view.ShowMessage(description + " category has been added");
+                _view.ResetFields();
+            }
+
         }
         public void RemoveCategory(int id)
         {
@@ -49,7 +63,7 @@ namespace MileStone6Presenter
                 return;
             }
             _calendar.events.Add(startingTime, categoryID, int.Parse(durationInMinutes), details);
-            _view.ShowMessage(details+" event has been added");
+            _view.ShowMessage(details + " event has been added");
             _view.ResetFields();
         }
         public void RemoveEvent(int id)
