@@ -41,5 +41,13 @@ namespace MileStone6Presenter
             this.Close();
         }
 
+        private void ToLeaveButton_Clicked(object sender, RoutedEventArgs e)
+        {
+            MessageBoxResult result = MessageBox.Show("Would you like to leave", "Exit", button: MessageBoxButton.OKCancel);
+            if (result == MessageBoxResult.OK)
+            {
+                this.Close();
+            }
+        }
     }
 }

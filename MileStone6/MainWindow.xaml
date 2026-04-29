@@ -14,6 +14,9 @@
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
+
+        <Button Background="DarkOrange" Content="X" Width="50" Height="50" Padding="10" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Right" FontSize="20"  Click="ToLeaveButton_Clicked"></Button>
+
         <StackPanel Margin="20">
             <TextBox Padding="10" Text="Welcome to your own Calendar App" TextAlignment="Center" Width=" 250" Height="75" FontSize="20" TextWrapping="Wrap"></TextBox>
             <TextBox Text="Where to?" TextAlignment="Center" Width=" 100" Height=" 25" FontSize="15" TextWrapping="Wrap"></TextBox>

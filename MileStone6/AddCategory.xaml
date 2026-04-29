@@ -8,6 +8,8 @@
         Title="Window1" Height="400" Width="800" MinHeight="400" MinWidth="600">
     <Grid Background="LightSteelBlue">
         <Button Click="CancelButton_CLicked" Content="Return/Cancel" Background="NavajoWhite" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="10px" FontSize="20" BorderBrush="Crimson" BorderThickness="5"></Button>
+        <Button Background="DarkOrange" Content="X" Width="55" Height="55" VerticalAlignment="Top" HorizontalAlignment="Right" FontSize="20"  Click="ToLeaveButton_Clicked" BorderBrush="Black" BorderThickness="5"></Button>
+
         <StackPanel>
             <Border BorderBrush="Black" BorderThickness="5" HorizontalAlignment="Center" CornerRadius="2.5">
                 <TextBlock Text="Fill out and submit!" Padding="10px" FontSize="20" HorizontalAlignment="Center" Background="White" ></TextBlock>
