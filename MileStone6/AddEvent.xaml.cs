@@ -13,6 +13,9 @@ namespace MileStone6Presenter
             InitializeComponent();
             p = new Presenter(this);
             eventCategory.ItemsSource = p.GetCategoryNames();
+
+            // default today date
+            eventDate.SelectedDate = DateTime.Today;
         }
         private void CancelButton_CLicked(object sender, RoutedEventArgs e)
         {
@@ -35,7 +38,11 @@ namespace MileStone6Presenter
 
         public void ShowMessage(string message)
         {
+<<<<<<< HEAD
             throw new NotImplementedException();
+=======
+            MessageBox.Show(message);
+>>>>>>> View
         }
 
         public void DisplayCurrentFile(string fileName)
@@ -94,7 +101,19 @@ namespace MileStone6Presenter
 
         public void KeepCategoryAndDate()
         {
+<<<<<<< HEAD
             throw new NotImplementedException();
+=======
+            int savedCategory = eventCategory.SelectedIndex;
+            DateTime? savedDate = eventDate.SelectedDate;
+
+            eventDetails.Text = string.Empty;
+            eventDuration.Text = string.Empty;
+
+            eventCategory.SelectedIndex = savedCategory;
+
+            eventDate.SelectedDate = savedDate;
+>>>>>>> View
         }
 
         public string GetCategoryDescription()
