@@ -26,26 +26,7 @@ namespace MileStone6Presenter
             _view = v;
         }
 
-        //public void AddCategory(string description, int type)
-        //{
-        //    if (string.IsNullOrEmpty(description))
-        //    {
-        //        _view.ShowError("Description cannot be void");
-        //        return;
-        //    }
-        //    else if (type == -1)
-        //    {
-        //        _view.ShowError("Category cannot be void");
-        //        return;
-        //    }
-        //    else
-        //    {
-        //        _calendar.categories.Add(description, (Category.CategoryType)type);
-        //        _view.ShowMessage(description + " category has been added");
-        //        _view.ResetFields();
-        //    }
-
-            //}
+        
             //========================
             // CATEGORY
             //========================
@@ -92,36 +73,6 @@ namespace MileStone6Presenter
 
         }
 
-     
-
-        //public void AddEvent(DateTime startingTime, int categoryID, string durationInMinutes, string details)
-        //{
-        //    if (string.IsNullOrEmpty(details))
-        //    {
-        //        _view.ShowError("Details cannot be void");
-        //    }
-        //    else if (categoryID == -1)
-        //    {
-        //        _view.ShowError("Category cannot be void");
-        //        return;
-        //    }
-        //    else if (startingTime == null)
-        //    {
-        //        _view.ShowError("Date cannot be void");
-        //        return;
-        //    }
-        //    else if (!int.TryParse(durationInMinutes, out int duration))
-        //    {
-        //        _view.ShowError("Duration cannot be void or a non integer");
-        //        return;
-        //    }
-        //    _calendar.events.Add(startingTime, categoryID, int.Parse(durationInMinutes), details);
-        //    _view.ShowMessage(details + " event has been added");
-        //    _view.ResetFields();
-        //}
-
-  
-  
         public List<string> GetCategoryTypeNames()
         {
             _typenames.Clear();
@@ -140,34 +91,44 @@ namespace MileStone6Presenter
             }
             return _categorynames;
         }
-      //========================
-      // EVENT
-      //========================
+        //========================
+        // EVENT
+        //========================
         public void AddEvent(DateTime startingTime, int categoryID, string durationInMinutes, string details)
         {
-            if (details == "")
+            if (string.IsNullOrEmpty(details))
             {
-                _view.ShowError("Details cannot be void");
+                _view.ShowError("Details cannot be empty");
                 return;
             }
+
             if (categoryID == -1)
             {
                 _view.ShowError("Choose a category");
                 return;
             }
 
-            int duration;
-
-            if (!int.TryParse(durationInMinutes, out duration))
+            // Note: DateTime is a value type, so it can't be null.
+            // If needed, check against a default value instead:
+            if (startingTime == default(DateTime))
             {
-                _view.ShowError("Duration must be an integer");
+                _view.ShowError("Date cannot be empty");
                 return;
             }
-            _calendar.events.Add(startingTime, categoryID, duration, details);
-            _view.ShowMessage("Event added");
-            // _view.ResetFields();
 
-            _view.KeepCategoryAndDate();
+            if (!int.TryParse(durationInMinutes, out int duration))
+            {
+                _view.ShowError("Duration must be a valid integer");
+                return;
+            }
+
+            _calendar.events.Add(startingTime, categoryID, duration, details);
+
+            _view.ShowMessage($"{details} event has been added");
+
+            // Choose ONE behavior depending on your UX:
+            _view.ResetFields();           // clears everything
+                                           // _view.KeepCategoryAndDate(); // keeps some selections
         }
 
 
