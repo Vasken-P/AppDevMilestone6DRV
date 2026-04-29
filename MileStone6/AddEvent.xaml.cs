@@ -38,8 +38,17 @@ namespace MileStone6Presenter
 
         public void ShowMessage(string message)
         {
+            ErrorBox.Text = message;
+        }
 
-            MessageBox.Show(message);
+
+
+        public void ResetFields()
+        {
+            eventCategory.SelectedIndex = -1;
+            eventDetails.Text = string.Empty;
+            eventDate.SelectedDate = DateTime.Parse(defaultDate);
+            eventDuration.Text = string.Empty;
 
         }
 
@@ -70,35 +79,6 @@ namespace MileStone6Presenter
 
         public int GetRepeatDays()
         {
-            throw new NotImplementedException();
-        }
-
-        public void SetDefaultDate(string date)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void SetDefaultTime(string time)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void SetCategories(List<string> categories)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ResetFields()
-        {
-            eventCategory.SelectedIndex = -1;
-            eventDetails.Text = string.Empty;
-            eventDate.SelectedDate = DateTime.Parse(defaultDate);
-            eventDuration.Text = string.Empty;
-
-        }
-
-        public void KeepCategoryAndDate()
-        {
 
             int savedCategory = eventCategory.SelectedIndex;
             DateTime? savedDate = eventDate.SelectedDate;
@@ -112,14 +92,18 @@ namespace MileStone6Presenter
 
         }
 
-        public string GetCategoryDescription()
+        public void AskToLeave()
         {
-            throw new NotImplementedException();
+            MessageBoxResult result = MessageBox.Show("Would you like to leave", "Exit", button: MessageBoxButton.OKCancel);
+            if (result == MessageBoxResult.OK)
+            {
+                this.Close();
+            }
+            
         }
-
-        public void ClearCategoryFields()
+        private void ToLeaveButton_Clicked(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            p.Leaving();
         }
 
         public void ConfirmUnsavedChanges()

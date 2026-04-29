@@ -136,8 +136,28 @@ namespace MileStone6Presenter
         {
             _calendar.events.Delete(id);
         }
-
-
+        public List<string> GetCategoryTypeNames()
+        {
+            typenames.Clear();
+            foreach (string type in Enum.GetNames<Category.CategoryType>())
+            {
+                typenames.Add(type);
+            }
+            return typenames;
+        }
+        public List<string> GetCategoryNames()
+        {
+            categorynames.Clear();
+            foreach (Category category in _calendar.categories.List())
+            {
+                categorynames.Add(category.Description);
+            }
+            return categorynames;
+        }
+        public void Leaving()
+        {
+            _view.AskToLeave();
+        }
 
         //for testing only
         public void CloseCalendar()
