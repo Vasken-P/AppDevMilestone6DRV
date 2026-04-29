@@ -45,14 +45,14 @@ namespace MileStone6Presenter
         //        _view.ResetFields();
         //    }
 
-        //}
-        //========================
-        // CATEGORY
-        //========================
+            //}
+            //========================
+            // CATEGORY
+            //========================
 
-        public void AddCategory(string description, int type)
+            public void AddCategory(string description, int type)
         {
-            if (description == "")
+            if (string.IsNullOrEmpty(description))
 
             {
                 _view.ShowError("Description cannot be void");
