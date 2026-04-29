@@ -7,13 +7,17 @@ namespace TestThePresenter
 
         public bool calledShowMessage;
         public bool calledShowError;
-        public bool calledClearEvents;
+
         public bool calledResetFields;
+
         public Presenter p;
         private DateTime mockeventDate = DateTime.Today.Date.AddDays(1);
-        private int mockeventCategory;
-        private string mockeventDetails;
-        private string mockeventDuration;
+        private int mockEventCategory;
+        private string mockEventDetails = "";
+        private string mockEventDuration = "";
+
+        private string mockCategoryDescription = "";
+        private int mockCategoryType;
 
         [Fact]
         public void ConstructorSuccess()
@@ -26,76 +30,149 @@ namespace TestThePresenter
             //Assert
             Assert.IsType<Presenter>(p);
         }
+
+        [Fact]
+        public void AddEventSuccess()
+        {
+            //Arrange
+            TestView view = new TestView();
+            p = new Presenter(view);
+            calledResetFields = false;
+            calledResetFields = false;
+
+            //Act
+            mockEventCategory = 1;
+            mockEventDetails = "ADetail";
+            mockEventDuration = "5";
+            p.AddEvent(mockeventDate, mockEventCategory, mockEventDuration, mockEventDetails);
+
+            //Assert
+            Assert.True(calledShowMessage);
+            Assert.True(calledResetFields);
+
+            p.RemoveEvent(0);
+
+        }
+
+        [Fact]
+        public void AddEventFailBadCategory()
+        {
+            //Arrange
+            TestView view = new TestView();
+            p = new Presenter(view);
+            calledResetFields = false;
+            calledShowError = false;
+
+            //Act
+            mockEventCategory = -1;
+            mockEventDetails = "ADetail";
+            mockEventDuration = "5";
+            p.AddEvent(mockeventDate, mockEventCategory, mockEventDuration, mockEventDetails);
+
+            //Assert
+            Assert.True(calledShowError);
+            Assert.True(!calledResetFields);
+
+        }
+
+        [Fact]
+        public void AddEventFailBadDuration()
+        {
+            //Arrange
+            TestView view = new TestView();
+            p = new Presenter(view);
+            calledResetFields = false;
+            calledShowError = false;
+
+            //Act
+            mockEventCategory = 1;
+            mockEventDetails = "ADetail";
+            p.AddEvent(mockeventDate, mockEventCategory, "mockeventDuration", mockEventDetails);
+
+            //Assert
+            Assert.True(calledShowError);
+            Assert.True(!calledResetFields);
+
+        }
+
+        [Fact]
+        public void AddEventFailBadDetails()
+        {
+            //Arrange
+            TestView view = new TestView();
+            p = new Presenter(view);
+            calledResetFields = false;
+            calledShowError = false;
+
+            //Act
+            mockEventCategory = 1;
+            mockEventDetails = "";
+            mockEventDuration = "5";
+            p.AddEvent(mockeventDate, mockEventCategory, mockEventDuration, mockEventDetails);
+
+            //Assert
+            Assert.True(calledShowError);
+            Assert.True(!calledResetFields);
+
+        }
+
+
+        //
+        //      CATEGORIES
+        //
         [Fact]
         public void AddCategorySuccess()
         {
             //Arrange
             TestView view = new TestView();
             p = new Presenter(view);
-            calledClearEvents = false;
+            calledResetFields = false;
             calledResetFields = false;
 
-            //Act
-            mockeventCategory = 1;
-            mockeventDetails = "ADetail";
-            mockeventDuration = "5";
-            p.AddEvent(mockeventDate, mockeventCategory, mockeventDuration, mockeventDetails);
+            //Act           
+            mockCategoryDescription = "ACategory";
+            mockCategoryType = 1;
+            p.AddCategory(mockCategoryDescription, mockCategoryType);
 
             //Assert
             Assert.True(calledShowMessage);
             Assert.True(calledResetFields);
 
+            p.RemoveCategory(4);
+
         }
-        public void AddCategoryFailBadCategory()
+        [Fact]
+        public void AddCategoryFailBadDescription()
         {
             //Arrange
             TestView view = new TestView();
             p = new Presenter(view);
-            calledClearEvents = false;
+            calledResetFields = false;
             calledShowError = false;
 
             //Act
-            mockeventCategory = -1;
-            mockeventDetails = "ADetail";
-            mockeventDuration = "5";
-            p.AddEvent(mockeventDate, mockeventCategory, mockeventDuration, mockeventDetails);
-
+            mockCategoryDescription = "";
+            mockCategoryType = 1;
+            p.AddCategory(mockCategoryDescription, mockCategoryType);
+            
             //Assert
             Assert.True(calledShowError);
             Assert.True(!calledResetFields);
 
         }
-        public void AddCategoryFailBadDuration()
+        [Fact]
+        public void AddCategoryFailBadType()
         {
             //Arrange
             TestView view = new TestView();
             p = new Presenter(view);
-            calledClearEvents = false;
+            calledResetFields = false;
             calledShowError = false;
 
             //Act
-            mockeventCategory = 1;
-            mockeventDetails = "ADetail";
-            p.AddEvent(mockeventDate, mockeventCategory, "mockeventDuration", mockeventDetails);
-
-            //Assert
-            Assert.True(calledShowError);
-            Assert.True(!calledResetFields);
-
-        }
-        public void AddCategoryFailBadDetails()
-        {
-            //Arrange
-            TestView view = new TestView();
-            p = new Presenter(view);
-            calledClearEvents = false;
-            calledShowError = false;
-
-            //Act
-            mockeventCategory = 1;
-            mockeventDetails = "";
-            mockeventDuration = "5";
-            p.AddEvent(mockeventDate, mockeventCategory, mockeventDuration, mockeventDetails);
+            mockCategoryDescription = "ADescription";
+            mockCategoryType = -1;
+            p.AddCategory(mockCategoryDescription, mockCategoryType);
 
             //Assert
             Assert.True(calledShowError);

@@ -1,5 +1,4 @@
 ﻿using System.Windows;
-using System.Windows.Controls;
 
 namespace MileStone6Presenter
 {
@@ -36,19 +35,7 @@ namespace MileStone6Presenter
 
         private void Submit_Click(object sender, RoutedEventArgs e)
         {
-            if (string.IsNullOrEmpty(CategoryDescription.Text))
-            {
-                ShowError("Description cannot be void");
-            }
-            else if (CategoryTypes.SelectedIndex == -1)
-            {
-                ShowError("Category cannot be void");
-                return;
-            }
-            else
-            {
-                p.AddCategory(CategoryDescription.Text, CategoryTypes.SelectedIndex);
-            }
+            p.AddCategory(CategoryDescription.Text, CategoryTypes.SelectedIndex);
         }
         public void ShowError(string message)
         {
