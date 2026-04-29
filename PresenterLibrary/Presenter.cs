@@ -10,9 +10,13 @@ namespace MileStone6Presenter
         private List<string> categorynames;
 =======
 
+     
+
+
         private List<string> _typenames;
         private List<string> _categorynames;
 >>>>>>> View
+
 
 
         public Presenter(ViewInterface v)
