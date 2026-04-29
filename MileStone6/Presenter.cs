@@ -18,9 +18,23 @@ namespace MileStone6
             _typenames = new List<string>();
             _categorynames = new List<string>();
         }
-        public void AddCategory(string description, int type)
+        //public void AddCategory(string description, int type)
+        //{
+        //    Calendar.categories.Add(description, (Category.CategoryType)type);
+        //}
+        // story about preventing duplicate category
+        public bool AddCategory(string description,int type)
         {
-            Calendar.categories.Add(description, (Category.CategoryType)type);
+            foreach (Category category in _calendar.categories.List())
+            {
+                if (category.Description.ToLower() == description)
+                {
+                    return false;
+                }
+            }
+
+            _calendar.categories.Add(description, (Category.CategoryType)type);
+            return true;
         }
         public void RemoveCategory(int id)
         {
