@@ -6,8 +6,12 @@ namespace MileStone6Presenter
         private readonly ViewInterface _view;
         private HomeCalendar _calendar;
 
+     
+
+
         private List<string> _typenames;
         private List<string> _categorynames;
+
 
 
         public Presenter(ViewInterface v)
