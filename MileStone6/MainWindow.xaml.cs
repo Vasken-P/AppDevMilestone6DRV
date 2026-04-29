@@ -9,33 +9,34 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace MileStone6
+namespace MileStone6Presenter
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window 
     {
-        Presenter p;
+        
         public MainWindow()
-        {
-            if (p is null)
-            {
-                p = new Presenter();
-            }
+        {   
             InitializeComponent();
+        }
+
+        public void ClearCategoryFields()
+        {
+            throw new NotImplementedException();
         }
 
         private void ToAddCategoryButton_Click(object sender, RoutedEventArgs e)
         {
-            AddCategory w = new AddCategory(p);
+            AddCategory w = new AddCategory();
             w.Show();
             this.Close();           
         }
 
         private void ToAddEventButton_Click(object sender, RoutedEventArgs e)
         {
-            AddEvent w = new AddEvent(p);
+            AddEvent w = new AddEvent();
             w.Show();
             this.Close();
         }

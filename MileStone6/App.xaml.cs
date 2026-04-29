@@ -2,7 +2,7 @@
 using System.Data;
 using System.Windows;
 
-namespace MileStone6
+namespace MileStone6Presenter
 {
     /// <summary>
     /// Interaction logic for App.xaml
