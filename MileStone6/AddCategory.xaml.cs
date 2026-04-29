@@ -45,11 +45,11 @@ namespace MileStone6Presenter
 
         public void ShowMessage(string message)
         {
-<<<<<<< HEAD
-            throw new NotImplementedException();
-=======
+
+           // throw new NotImplementedException();
+
             MessageBox.Show(message);
->>>>>>> View
+
         }
 
         public void DisplayCurrentFile(string fileName)
@@ -104,12 +104,12 @@ namespace MileStone6Presenter
 
         public void ClearCategoryFields()
         {
-<<<<<<< HEAD
-            throw new NotImplementedException();
-=======
+
+            //throw new NotImplementedException();
+
             CategoryDescription.Text = string.Empty;
             CategoryTypes.SelectedIndex = -1;
->>>>>>> View
+
         }
 
         public void ConfirmUnsavedChanges()
