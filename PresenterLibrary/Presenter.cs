@@ -88,6 +88,10 @@ namespace MileStone6Presenter
             }
             return categorynames;
         }
+        public void Leaving()
+        {
+            _view.AskToLeave();
+        }
 
         //for testing only
         public void CloseCalendar()

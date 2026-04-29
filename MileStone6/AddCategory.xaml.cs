@@ -37,6 +37,26 @@ namespace MileStone6Presenter
         {
             p.AddCategory(CategoryDescription.Text, CategoryTypes.SelectedIndex);
         }
+
+        public void AskToLeave()
+        {
+            MessageBoxResult result = MessageBox.Show("Would you like to leave", "Exit", button: MessageBoxButton.OKCancel);
+            if (result == MessageBoxResult.OK)
+            {
+                this.Close();
+            }
+
+        }
+        private void ToLeaveButton_Clicked(object sender, RoutedEventArgs e)
+        {
+            p.Leaving();
+        }
+
+        public void ConfirmUnsavedChanges()
+        {
+            throw new NotImplementedException();
+        }
+
         public void ShowError(string message)
         {
             ErrorBox.Text = message;
@@ -45,7 +65,7 @@ namespace MileStone6Presenter
 
         public void ShowMessage(string message)
         {
-            throw new NotImplementedException();
+            ErrorBox.Text = message;
         }
 
         public void DisplayCurrentFile(string fileName)
@@ -99,11 +119,6 @@ namespace MileStone6Presenter
         }
 
         public void ClearCategoryFields()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ConfirmUnsavedChanges()
         {
             throw new NotImplementedException();
         }

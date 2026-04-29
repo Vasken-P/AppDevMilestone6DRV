@@ -24,18 +24,11 @@ namespace MileStone6Presenter
 
         // add event
         int GetRepeatDays();
-        void SetDefaultDate(string date);
-        void SetDefaultTime(string time);
-        void SetCategories(List<string> categories);
         void ResetFields();
-        void KeepCategoryAndDate();
-
-
-        // add category
-        string GetCategoryDescription();
-        void ClearCategoryFields();
+        //void KeepCategoryInfo();
 
         // closing
+        void AskToLeave();
         void ConfirmUnsavedChanges();
 
 

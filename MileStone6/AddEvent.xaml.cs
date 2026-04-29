@@ -35,7 +35,18 @@ namespace MileStone6Presenter
 
         public void ShowMessage(string message)
         {
-            throw new NotImplementedException();
+            ErrorBox.Text = message;
+        }
+
+
+
+        public void ResetFields()
+        {
+            eventCategory.SelectedIndex = -1;
+            eventDetails.Text = string.Empty;
+            eventDate.SelectedDate = DateTime.Parse(defaultDate);
+            eventDuration.Text = string.Empty;
+
         }
 
         public void DisplayCurrentFile(string fileName)
@@ -68,43 +79,18 @@ namespace MileStone6Presenter
             throw new NotImplementedException();
         }
 
-        public void SetDefaultDate(string date)
+        public void AskToLeave()
         {
-            throw new NotImplementedException();
+            MessageBoxResult result = MessageBox.Show("Would you like to leave", "Exit", button: MessageBoxButton.OKCancel);
+            if (result == MessageBoxResult.OK)
+            {
+                this.Close();
+            }
+            
         }
-
-        public void SetDefaultTime(string time)
+        private void ToLeaveButton_Clicked(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
-        }
-
-        public void SetCategories(List<string> categories)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ResetFields()
-        {
-            eventCategory.SelectedIndex = -1;
-            eventDetails.Text = string.Empty;
-            eventDate.SelectedDate = DateTime.Parse(defaultDate);
-            eventDuration.Text = string.Empty;
-
-        }
-
-        public void KeepCategoryAndDate()
-        {
-            throw new NotImplementedException();
-        }
-
-        public string GetCategoryDescription()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void ClearCategoryFields()
-        {
-            throw new NotImplementedException();
+            p.Leaving();
         }
 
         public void ConfirmUnsavedChanges()
