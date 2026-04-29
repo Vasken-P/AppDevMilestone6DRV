@@ -10,6 +10,7 @@ namespace MileStone6Presenter
     {
         // general basic things for the view
         void ShowMessage(string message);
+        void ShowError(string message);
         void Close();
 
         // file/startup

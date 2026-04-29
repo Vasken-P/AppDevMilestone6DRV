@@ -38,11 +38,11 @@ namespace MileStone6Presenter
         {
             if (string.IsNullOrEmpty(CategoryDescription.Text))
             {
-                showerrorinbox(CategoryDescription, "Description cannot be void");
+                ShowError("Description cannot be void");
             }
             else if (CategoryTypes.SelectedIndex == -1)
             {
-                showerrorinbox(CategoryTypes, "Category cannot be void");
+                ShowError("Category cannot be void");
                 return;
             }
             else
@@ -50,7 +50,7 @@ namespace MileStone6Presenter
                 p.AddCategory(CategoryDescription.Text, CategoryTypes.SelectedIndex);
             }
         }
-        private void showerrorinbox(Control ct, string message)
+        public void ShowError(string message)
         {
             ErrorBox.Text = message;
             //BorderBrush = "Crimson" BorderThickness = "5"

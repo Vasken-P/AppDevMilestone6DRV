@@ -12,7 +12,6 @@ namespace MileStone6Presenter
         public Presenter(ViewInterface v)
         {
             _calendar = new HomeCalendar("C:\\Users\\vaske\\OneDrive\\Desktop\\AppDev\\AppDevMilestone6DRV\\PresenterLibrary\\DatabaseFiles\\TestDBFile.db");
-            
             typenames = new List<string>();
             categorynames = new List<string>();
             _view = v;
@@ -28,9 +27,28 @@ namespace MileStone6Presenter
             _calendar.categories.Delete(id);
 
         }
-        public void AddEvent(DateTime startingTime, int categoryID, int durationInMinutes, string details)
+        public void AddEvent(DateTime startingTime, int categoryID, string durationInMinutes, string details)
         {
-            _calendar.events.Add(startingTime, categoryID, durationInMinutes, details);
+            if (string.IsNullOrEmpty(details))
+            {
+                _view.ShowError("Details cannot be void");
+            }
+            else if (categoryID == -1)
+            {
+                _view.ShowError("Category cannot be void");
+                return;
+            }
+            else if (startingTime == null)
+            {
+                _view.ShowError("Date cannot be void");
+                return;
+            }
+            else if (!int.TryParse(durationInMinutes, out int duration))
+            {
+                _view.ShowError("Duration cannot be void or a non integer");
+                return;
+            }
+            _calendar.events.Add(startingTime, categoryID, int.Parse(durationInMinutes), details);
             _view.ShowMessage(details+" event has been added");
             _view.ResetFields();
         }
@@ -55,6 +73,12 @@ namespace MileStone6Presenter
                 categorynames.Add(category.Description);
             }
             return categorynames;
+        }
+
+        //for testing only
+        public void CloseCalendar()
+        {
+            _calendar.CloseDB();
         }
     }
 }
