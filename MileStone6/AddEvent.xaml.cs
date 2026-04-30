@@ -90,6 +90,8 @@ namespace MileStone6Presenter
             //eventDate.SelectedDate = savedDate;
             return 1;
 
+            return savedCategory;
+
         }
 
         public void AskToLeave()

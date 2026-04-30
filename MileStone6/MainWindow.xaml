@@ -20,7 +20,7 @@
         <StackPanel Margin="20">
             <TextBox Padding="10" Text="Welcome to your own Calendar App" TextAlignment="Center" Width=" 250" Height="75" FontSize="20" TextWrapping="Wrap"></TextBox>
             <TextBox Text="Where to?" TextAlignment="Center" Width=" 100" Height=" 25" FontSize="15" TextWrapping="Wrap"></TextBox>
-            <TextBlock x:Name="FileNameBox" Text="TestDBFile.db" HorizontalAlignment="Center" FontSize="12"/>
+
         </StackPanel>
         <Button Background="IndianRed" Padding="10" Content="Add Event" Width=" 200" Height="75" FontSize="20" Grid.Row="1" Click="ToAddEventButton_Click"></Button>
         <Button Background="PaleGreen" Padding="10" Content="Add Category" Width=" 200" Height="75" FontSize="20" Grid.Row="2" Click="ToAddCategoryButton_Click"></Button>
