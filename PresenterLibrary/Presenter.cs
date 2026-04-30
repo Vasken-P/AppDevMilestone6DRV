@@ -1,21 +1,7 @@
 ﻿using Calendar;
 namespace MileStone6Presenter
 {
-    /// <summary>
-    /// Handles all application logic between the view and the calendar model.
-    /// </summary>
-    /// <remarks>
-    /// Acts as the "middle-man" in the MVP architecture.
-    /// Responsible for validating user input, calling the model, 
-    /// and updating the view accordingly.
-    /// </remarks>
-    /// <example>
-    /// <![CDATA[
-    /// ViewInterface view = new SomeView();
-    /// Presenter p = new Presenter(view, "TestDBFile.db");
-    /// p.AddCategory("School", 1);
-    /// ]]>
-    /// </example>
+ 
     public class Presenter
     {
         private readonly ViewInterface _view;
