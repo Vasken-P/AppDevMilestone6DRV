@@ -30,7 +30,7 @@ namespace MileStone6Presenter
         // closing
         void AskToLeave();
         void ConfirmUnsavedChanges();
-
+        void ToCategoryWindowFromEvents();
 
 
 

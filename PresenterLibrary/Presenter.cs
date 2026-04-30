@@ -7,7 +7,7 @@ namespace MileStone6Presenter
         private HomeCalendar _calendar;
 
 
-     
+
 
 
         private List<string> _typenames;
@@ -26,12 +26,12 @@ namespace MileStone6Presenter
             _view = v;
         }
 
-        
-            //========================
-            // CATEGORY
-            //========================
 
-            public void AddCategory(string description, int type)
+        //========================
+        // CATEGORY
+        //========================
+
+        public void AddCategory(string description, int type)
         {
             if (string.IsNullOrEmpty(description))
 
@@ -63,14 +63,9 @@ namespace MileStone6Presenter
 
         }
 
-
-        
-        
-
         public void RemoveCategory(int id)
         {
             _calendar.categories.Delete(id);
-
         }
 
         public List<string> GetCategoryTypeNames()
@@ -125,18 +120,16 @@ namespace MileStone6Presenter
             _calendar.events.Add(startingTime, categoryID, duration, details);
 
             _view.ShowMessage($"{details} event has been added");
-
-            // Choose ONE behavior depending on your UX:
-            _view.ResetFields();           // clears everything
-                                           // _view.KeepCategoryAndDate(); // keeps some selections
         }
 
-
+        public void ToCategoryWindow()
+        {
+            _view.ToCategoryWindowFromEvents();
+        }
         public void RemoveEvent(int id)
         {
             _calendar.events.Delete(id);
         }
-
         public void Leaving()
         {
             _view.AskToLeave();

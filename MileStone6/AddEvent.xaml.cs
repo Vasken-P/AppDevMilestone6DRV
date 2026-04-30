@@ -6,16 +6,16 @@ namespace MileStone6Presenter
     /// </summary>
     public partial class AddEvent : Window, ViewInterface
     {
-        private string defaultDate = DateTime.Today.ToString("dd-MM-yyyy");
-        private readonly Presenter p;
+        private Presenter p;
+        string defaultDate = DateTime.Now.AddMinutes(30).ToString("HH:mm dd/MM/yyyy");
+        
         public AddEvent()
         {
             InitializeComponent();
             p = new Presenter(this);
             eventCategory.ItemsSource = p.GetCategoryNames();
-
             // default today date
-            eventDate.SelectedDate = DateTime.Today;
+            eventDate.SelectedDate = DateTime.ParseExact(defaultDate, "HH:mm dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
         }
         private void CancelButton_CLicked(object sender, RoutedEventArgs e)
         {
@@ -45,11 +45,10 @@ namespace MileStone6Presenter
 
         public void ResetFields()
         {
-            eventCategory.SelectedIndex = -1;
             eventDetails.Text = string.Empty;
-            eventDate.SelectedDate = DateTime.Parse(defaultDate);
             eventDuration.Text = string.Empty;
-
+            eventCategory.SelectedIndex = -1;
+            eventDate.SelectedDate = DateTime.ParseExact(defaultDate, "HH:mm dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
         }
 
         public void DisplayCurrentFile(string fileName)
@@ -80,15 +79,16 @@ namespace MileStone6Presenter
         public int GetRepeatDays()
         {
 
-            int savedCategory = eventCategory.SelectedIndex;
-            DateTime? savedDate = eventDate.SelectedDate;
+            //int savedCategory = eventCategory.SelectedIndex;
+            //DateTime? savedDate = eventDate.SelectedDate;
 
-            eventDetails.Text = string.Empty;
-            eventDuration.Text = string.Empty;
+            //eventDetails.Text = string.Empty;
+            //eventDuration.Text = string.Empty;
 
-            eventCategory.SelectedIndex = savedCategory;
+            //eventCategory.SelectedIndex = savedCategory;
 
-            eventDate.SelectedDate = savedDate;
+            //eventDate.SelectedDate = savedDate;
+            return 1;
 
             return savedCategory;
 
@@ -113,7 +113,24 @@ namespace MileStone6Presenter
             throw new NotImplementedException();
         }
 
+        public void ToCategoryWindowFromEvents()
+        {
+            EventGrid.IsHitTestVisible = false;
+            AddCategory w = new AddCategory(this, p);
+            w.Show();
 
+            
+        }
+        private void ConveniantAddCatButton_Click(object sender, RoutedEventArgs e)
+        {
+            p.ToCategoryWindow();
+        }
+        public void ReturnToEventsWindow(Presenter presfromCat)
+        {
+            p = presfromCat;
+            EventGrid.IsHitTestVisible = true;
+            eventCategory.ItemsSource = p.GetCategoryNames();
+        }
         //private void eventDuration_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         //{
         //    if (char.IsLetter(eventDuration.Text[eventDuration.Text.Length - 1]))

@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:MileStone6Presenter"
         mc:Ignorable="d"
-        Title="AddEvent" Height="450" Width="800" MinHeight="500" MinWidth="600">
-    <Grid Background="LightSteelBlue">
+        Title="AddEvent" Height="450" Width="750" MinHeight="550" MinWidth="750">
+    <Grid x:Name="EventGrid" Background="LightSteelBlue" IsHitTestVisible="True">
         <Button Click="CancelButton_CLicked" Content="Return/Cancel" Background="NavajoWhite" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="10px" FontSize="20" BorderBrush="Crimson" BorderThickness="5"></Button>
         <Button Background="DarkOrange" Content="X" Width="55" Height="55" VerticalAlignment="Top" HorizontalAlignment="Right" FontSize="20"  Click="ToLeaveButton_Clicked" BorderBrush="Black" BorderThickness="5"></Button>
 
@@ -28,25 +28,30 @@
                             <RowDefinition></RowDefinition>
                             <RowDefinition></RowDefinition>
                             <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+
                         </Grid.RowDefinitions>
 
                         <TextBlock FontSize="25" Margin="15">Details:</TextBlock>
-                        <TextBox x:Name="eventDetails" Grid.Column="1" Margin="5" FontSize="15" TextAlignment="Center" VerticalContentAlignment="Center" BorderBrush="Transparent" BorderThickness="5"></TextBox>
+                        <TextBox x:Name="eventDetails" Grid.Column="1" Grid.Row="0" Grid.RowSpan="2" Margin="5" FontSize="15" TextAlignment="Center" VerticalContentAlignment="Center" BorderBrush="Transparent" BorderThickness="5"></TextBox>
+                        <TextBlock FontSize="25" Margin="15" Grid.Row="1"/>
 
-                        <TextBlock FontSize="25" Margin="15" Grid.Row="1">Category:</TextBlock>
-                        <ComboBox x:Name="eventCategory" Grid.Column="1" Grid.Row="1" Margin="10" FontSize="15"  VerticalContentAlignment="Center"></ComboBox>
+                        <TextBlock FontSize="25" Margin="15" Grid.Row="2">Category:</TextBlock>
+                        <ComboBox x:Name="eventCategory" Grid.Column="1" Grid.Row="2" Margin="10" FontSize="15"  VerticalContentAlignment="Center"></ComboBox>
 
-                        <TextBlock FontSize="25" Margin="15" Grid.Row="2">Date:</TextBlock>
-                        <DatePicker x:Name="eventDate" Grid.Row="2" Grid.Column="1" Margin="5" FontSize="15"  VerticalContentAlignment="Center" BorderBrush="Transparent" BorderThickness="5"></DatePicker>
-                        
-                        <TextBlock FontSize="25" Margin="15" Grid.Row="3">Duration:</TextBlock>
-                        <TextBox x:Name="eventDuration" Grid.Row="3" Grid.Column="1" Margin="5" FontSize="15" TextAlignment="Center" VerticalContentAlignment="Center" BorderBrush="Transparent" BorderThickness="5"></TextBox>
+                        <TextBlock FontSize="25" Margin="15" Grid.Row="3">Date:</TextBlock>
+                        <DatePicker x:Name="eventDate" Grid.Row="3" Grid.Column="1" Margin="5" FontSize="15"  VerticalContentAlignment="Center" BorderBrush="Transparent" BorderThickness="5"></DatePicker>
 
-                        <TextBox x:Name="ErrorBox" IsHitTestVisible="False" Background="White" Grid.Row="4"  FontSize="10" TextWrapping="Wrap" Margin="10" Width="200" Padding="2"></TextBox>
-                        <Button x:Name="Submit" Background="LightBlue" Grid.Row="4" Grid.Column="2" FontSize="20" Margin="10" Width="200" Padding="10" Click="Submit_Click">Add</Button>
+                        <TextBlock FontSize="25" Margin="15" Grid.Row="4">Duration:</TextBlock>
+                        <TextBox x:Name="eventDuration" Grid.Row="4" Grid.Column="1" Margin="5" FontSize="15" TextAlignment="Center" VerticalContentAlignment="Center" BorderBrush="Transparent" BorderThickness="5"></TextBox>
+
+                        <TextBox x:Name="ErrorBox" IsHitTestVisible="False" Background="White" Grid.Row="5"  FontSize="10" TextWrapping="Wrap" Margin="10" Width="200" Padding="2"></TextBox>
+                        <Button x:Name="Submit" Background="LightBlue" Grid.Row="5" Grid.Column="1" FontSize="20" Margin="10" Width="200" Padding="10" Click="Submit_Click">Add</Button>
                     </Grid>
                 </StackPanel>
             </GroupBox>
+            <Button Background="LightGreen" Content="New" Width="100" Height="43" Margin="600 -265 0 0" VerticalAlignment="Top" FontSize="20"  Click="ConveniantAddCatButton_Click"  BorderBrush="Black" BorderThickness="5"></Button>
+
         </StackPanel>
     </Grid>
 </Window>

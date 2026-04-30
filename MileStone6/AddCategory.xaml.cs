@@ -8,10 +8,23 @@ namespace MileStone6Presenter
     public partial class AddCategory : Window, ViewInterface
     {
         public Presenter p;
-        public AddCategory()
+        public AddEvent? sourceEventWindow = null;
+
+
+        public AddCategory(AddEvent? sourceEventWindow, Presenter? presFromEvents)
         {
-            p = new Presenter(this);
             InitializeComponent();
+            if (sourceEventWindow != null && presFromEvents != null)
+            {
+                p = presFromEvents;
+                this.sourceEventWindow = sourceEventWindow;
+                CloseButton.IsEnabled = false;
+            }
+            else
+            {
+                p = new Presenter(this);
+            }
+
             CategoryTypes.ItemsSource = p.GetCategoryTypeNames();
         }
 
@@ -28,9 +41,20 @@ namespace MileStone6Presenter
 
         private void CancelButton_CLicked(object sender, RoutedEventArgs e)
         {
-            MainWindow mw = new MainWindow();
-            mw.Show();
-            this.Close();
+            if (sourceEventWindow != null)
+            {
+                sourceEventWindow.Show();
+                sourceEventWindow.ReturnToEventsWindow(p);
+
+                this.Close();
+            }
+            else
+            {
+                MainWindow mw = new MainWindow();
+                mw.Show();
+                this.Close();
+            }
+
         }
 
         private void Submit_Click(object sender, RoutedEventArgs e)
@@ -45,7 +69,6 @@ namespace MileStone6Presenter
             {
                 this.Close();
             }
-
         }
         private void ToLeaveButton_Clicked(object sender, RoutedEventArgs e)
         {
@@ -126,6 +149,11 @@ namespace MileStone6Presenter
             CategoryDescription.Text = string.Empty;
             CategoryTypes.SelectedIndex = -1;
 
+        }
+
+        public void ToCategoryWindowFromEvents()
+        {
+            throw new NotImplementedException();
         }
     }
 }

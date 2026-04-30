@@ -29,7 +29,7 @@ namespace MileStone6Presenter
 
         private void ToAddCategoryButton_Click(object sender, RoutedEventArgs e)
         {
-            AddCategory w = new AddCategory();
+            AddCategory w = new AddCategory(null, null);
             w.Show();
             this.Close();           
         }
