@@ -66,7 +66,6 @@ namespace MileStone6Presenter
         public void RemoveCategory(int id)
         {
             _calendar.categories.Delete(id);
-
         }
 
         public List<string> GetCategoryTypeNames()

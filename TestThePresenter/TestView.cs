@@ -303,7 +303,7 @@ namespace TestThePresenter
                 Assert.True(view.calledAskToLeave);
             }
 
-            [Fact] //iffy unit test, ask mrs helen when possible
+            [Fact] //iffy unit test, ask Mrs Helen when possible
             public void OpenCatWindowFromEventsWindowAndAddCategory()
             {
                 //Arrange
