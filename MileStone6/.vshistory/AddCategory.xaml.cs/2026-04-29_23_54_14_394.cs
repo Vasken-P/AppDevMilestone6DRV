@@ -7,9 +7,9 @@ namespace MileStone6Presenter
     public partial class AddCategory : Window, ViewInterface
     {
         public Presenter p;
-        public AddEvent sourceEventWindow = null;
+        public AddEvent? sourceEventWindow = null;
 
-        public AddCategory(AddEvent sourceEventWindow, Presenter presFromEvents, string databasePath)
+        public AddCategory(AddEvent? sourceEventWindow, Presenter? presFromEvents)
         {
             InitializeComponent();
 
@@ -22,13 +22,15 @@ namespace MileStone6Presenter
             }
             else
             {
-                p = new Presenter(this, databasePath);
+                // Note: You'll need to ensure your Presenter has a constructor 
+                // that accepts only the view if no path is provided.
+                p = new Presenter(this, "");
             }
 
             CategoryTypes.ItemsSource = p.GetCategoryTypeNames();
         }
 
-
+        #region ViewInterface - General
         public void ShowMessage(string message)
         {
             ErrorBox.Text = message;
@@ -43,13 +45,17 @@ namespace MileStone6Presenter
         {
             base.Close();
         }
+        #endregion
 
+        #region ViewInterface - File Operations (Not used in this window)
         public void DisplayCurrentFile(string fileName) { }
         public void GetFileName() { }
         public void GetFolderName() { }
         public void OpenFileExplorer() { }
         public void LoadLastUsedFile() { }
+        #endregion
 
+        #region ViewInterface - Category/Event Logic
         public void ResetFields()
         {
             CategoryDescription.Text = string.Empty;
@@ -69,7 +75,9 @@ namespace MileStone6Presenter
         {
             MessageBox.Show("Unsaved changes will be lost.");
         }
+        #endregion
 
+        #region Navigation & Events
         private void CancelButton_CLicked(object sender, RoutedEventArgs e)
         {
             if (sourceEventWindow != null)
@@ -104,14 +112,16 @@ namespace MileStone6Presenter
         {
             p.Leaving();
         }
+        #endregion
 
+        // Existing methods kept for compatibility with your snippets
         public void SetCategories(List<string> categories) { }
         public void SetDefaultDate(string date) { }
         public void SetDefaultTime(string time) { }
         public void KeepCategoryAndDate() { }
         public string GetCategoryDescription()
         {
-            return CategoryDescription.Text;
+            CategoryDescription.Text;
         }
     }
 }

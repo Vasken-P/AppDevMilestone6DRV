@@ -103,7 +103,7 @@ namespace MileStone6Presenter
         public void ToCategoryWindowFromEvents()
         {
             EventGrid.IsHitTestVisible = false;
-            AddCategory w = new AddCategory(this, p, _databasePath);
+            AddCategory w = new AddCategory(this, p, databasePath);
             w.Show();
         }
 

@@ -9,13 +9,12 @@ namespace MileStone6Presenter
     public partial class AddEvent : Window, ViewInterface
     {
         private string defaultDate = DateTime.Today.ToString("dd-MM-yyyy");
-        private string _databasePath;
+        private string databasePath;
         private Presenter p;
 
         public AddEvent(string databasePath)
         {
             InitializeComponent();
-            _databasePath = databasePath;
             p = new Presenter(this, databasePath);
             eventCategory.ItemsSource = p.GetCategoryNames();
 
@@ -103,7 +102,7 @@ namespace MileStone6Presenter
         public void ToCategoryWindowFromEvents()
         {
             EventGrid.IsHitTestVisible = false;
-            AddCategory w = new AddCategory(this, p, _databasePath);
+            AddCategory w = new AddCategory(this, p, databasePath);
             w.Show();
         }
 

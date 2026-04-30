@@ -7,7 +7,7 @@ namespace MileStone6Presenter
     public partial class AddCategory : Window, ViewInterface
     {
         public Presenter p;
-        public AddEvent sourceEventWindow = null;
+        public AddEvent? sourceEventWindow = null;
 
         public AddCategory(AddEvent sourceEventWindow, Presenter presFromEvents, string databasePath)
         {
