@@ -127,7 +127,10 @@ namespace MileStone6Presenter
                                            // _view.KeepCategoryAndDate(); // keeps some selections
         }
 
-
+        public void ToCategoryWindow()
+        {
+            _view.ToCategoryWindowFromEvents();
+        }
         public void RemoveEvent(int id)
         {
             _calendar.events.Delete(id);

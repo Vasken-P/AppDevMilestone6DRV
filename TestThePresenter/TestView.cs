@@ -11,7 +11,7 @@ namespace TestThePresenter
         public bool calledShowError;
 
         public bool calledResetFields;
-
+        public bool calledToCategoryFromEvent;
 
         public int mockEventCategory;
         public string mockEventDetails = "";
@@ -111,193 +111,217 @@ namespace TestThePresenter
             calledAskToLeave = true;
         }
 
-    }
-
-
-    public class UnitTest
-    {
-        [Fact]
-        public void ConstructorSuccess()
+        public void ToCategoryWindowFromEvents()
         {
-            //Arrange
-            //Act
-            TestView view = new TestView();
-            view.p = new Presenter(view);
-
-            //Assert
-            Assert.IsType<Presenter>(view.p);
+            calledToCategoryFromEvent = true;
         }
 
-        //
-        //      Events
-        //
 
-        [Fact]
-        public void AddEventSuccess()
+        public class UnitTest
         {
-            //Arrange
-            TestView view = new TestView();
-            view.p = new Presenter(view);
-            view.calledResetFields = false;
-            view.calledResetFields = false;
+            [Fact]
+            public void ConstructorSuccess()
+            {
+                //Arrange
+                //Act
+                TestView view = new TestView();
+                view.p = new Presenter(view);
 
-            //Act
-            view.mockEventCategory = 1;
-            view.mockEventDetails = "ADetail";
-            view.mockEventDuration = "5";
-            view.p.AddEvent(view.mockeventDate, view.mockEventCategory, view.mockEventDuration, view.mockEventDetails);
+                //Assert
+                Assert.IsType<Presenter>(view.p);
+            }
 
-            //Assert
-            Assert.True(view.calledShowMessage);
-            Assert.True(view.calledResetFields);
+            //
+            //      Events
+            //
 
-            view.p.RemoveEvent(0);
+            [Fact]
+            public void AddEventSuccess()
+            {
+                //Arrange
+                TestView view = new TestView();
+                view.p = new Presenter(view);
+                view.calledResetFields = false;
+                view.calledResetFields = false;
 
-        }
+                //Act
+                view.mockEventCategory = 1;
+                view.mockEventDetails = "ADetail";
+                view.mockEventDuration = "5";
+                view.p.AddEvent(view.mockeventDate, view.mockEventCategory, view.mockEventDuration, view.mockEventDetails);
 
-        [Fact]
-        public void AddEventFailBadCategory()
-        {
-            //Arrange
-            TestView view = new TestView();
-            view.p = new Presenter(view);
-            view.calledResetFields = false;
-            view.calledShowError = false;
+                //Assert
+                Assert.True(view.calledShowMessage);
+                Assert.True(view.calledResetFields);
 
-            //Act
-            view.mockEventCategory = -1;
-            view.mockEventDetails = "ADetail";
-            view.mockEventDuration = "5";
-            view.p.AddEvent(view.mockeventDate, view.mockEventCategory, view.mockEventDuration, view.mockEventDetails);
+                view.p.RemoveEvent(0);
 
-            //Assert
-            Assert.True(view.calledShowError);
-            Assert.True(!view.calledResetFields);
-        }
+            }
 
-        [Fact]
-        public void AddEventFailBadDuration()
-        {
-            //Arrange
-            TestView view = new TestView();
-            view.p = new Presenter(view);
-            view.calledResetFields = false;
-            view.calledShowError = false;
+            [Fact]
+            public void AddEventFailBadCategory()
+            {
+                //Arrange
+                TestView view = new TestView();
+                view.p = new Presenter(view);
+                view.calledResetFields = false;
+                view.calledShowError = false;
 
-            //Act
-            view.mockEventCategory = 1;
-            view.mockEventDetails = "ADetail";
-            view.p.AddEvent(view.mockeventDate, view.mockEventCategory, "mockeventDuration", view.mockEventDetails);
+                //Act
+                view.mockEventCategory = -1;
+                view.mockEventDetails = "ADetail";
+                view.mockEventDuration = "5";
+                view.p.AddEvent(view.mockeventDate, view.mockEventCategory, view.mockEventDuration, view.mockEventDetails);
 
-            //Assert
-            Assert.True(view.calledShowError);
-            Assert.True(!view.calledResetFields);
+                //Assert
+                Assert.True(view.calledShowError);
+                Assert.True(!view.calledResetFields);
+            }
 
-        }
+            [Fact]
+            public void AddEventFailBadDuration()
+            {
+                //Arrange
+                TestView view = new TestView();
+                view.p = new Presenter(view);
+                view.calledResetFields = false;
+                view.calledShowError = false;
 
-        [Fact]
-        public void AddEventFailBadDetails()
-        {
-            //Arrange
-            TestView view = new TestView();
-            view.p = new Presenter(view);
-            view.calledResetFields = false;
-            view.calledShowError = false;
+                //Act
+                view.mockEventCategory = 1;
+                view.mockEventDetails = "ADetail";
+                view.p.AddEvent(view.mockeventDate, view.mockEventCategory, "mockeventDuration", view.mockEventDetails);
 
-            //Act
-            view.mockEventCategory = 1;
-            view.mockEventDetails = "";
-            view.mockEventDuration = "5";
-            view.p.AddEvent(view.mockeventDate, view.mockEventCategory, view.mockEventDuration, view.mockEventDetails);
+                //Assert
+                Assert.True(view.calledShowError);
+                Assert.True(!view.calledResetFields);
 
-            //Assert
-            Assert.True(view.calledShowError);
-            Assert.True(!view.calledResetFields);
+            }
 
-        }
+            [Fact]
+            public void AddEventFailBadDetails()
+            {
+                //Arrange
+                TestView view = new TestView();
+                view.p = new Presenter(view);
+                view.calledResetFields = false;
+                view.calledShowError = false;
 
-        //
-        //      CATEGORIES
-        //
+                //Act
+                view.mockEventCategory = 1;
+                view.mockEventDetails = "";
+                view.mockEventDuration = "5";
+                view.p.AddEvent(view.mockeventDate, view.mockEventCategory, view.mockEventDuration, view.mockEventDetails);
 
-        [Fact]
-        public void AddCategorySuccess()
-        {
-            //Arrange
-            TestView view = new TestView();
-            view.p = new Presenter(view);
-            view.calledResetFields = false;
-            view.calledResetFields = false;
+                //Assert
+                Assert.True(view.calledShowError);
+                Assert.True(!view.calledResetFields);
 
-            //Act           
-            view.mockCategoryDescription = "ACategory";
-            view.mockCategoryType = 1;
-            view.p.AddCategory(view.mockCategoryDescription, view.mockCategoryType);
+            }
 
-            //Assert
-            Assert.True(view.calledShowMessage);
-            Assert.True(view.calledResetFields);
+            //
+            //      CATEGORIES
+            //
 
-            List<string> catlist = view.p.GetCategoryNames();
-            view.p.RemoveCategory(catlist.Count()-1);
+            [Fact]
+            public void AddCategorySuccess()
+            {
+                //Arrange
+                TestView view = new TestView();
+                view.p = new Presenter(view);
+                view.calledResetFields = false;
+                view.calledResetFields = false;
 
-        }
-        [Fact]
-        public void AddCategoryFailBadDescription()
-        {
-            //Arrange
-            TestView view = new TestView();
-            view.p = new Presenter(view);
-            view.calledResetFields = false;
-            view.calledShowError = false;
+                //Act           
+                view.mockCategoryDescription = "ACategory";
+                view.mockCategoryType = 1;
+                view.p.AddCategory(view.mockCategoryDescription, view.mockCategoryType);
 
-            //Act
-            view.mockCategoryDescription = "";
-            view.mockCategoryType = 1;
-            view.p.AddCategory(view.mockCategoryDescription, view.mockCategoryType);
+                //Assert
+                Assert.True(view.calledShowMessage);
+                Assert.True(view.calledResetFields);
 
-            //Assert
-            Assert.True(view.calledShowError);
-            Assert.True(!view.calledResetFields);
+                List<string> catlist = view.p.GetCategoryNames();
+                view.p.RemoveCategory(catlist.Count() - 1);
 
-        }
-        [Fact]
-        public void AddCategoryFailBadType()
-        {
-            //Arrange
-            TestView view = new TestView();
-            view.p = new Presenter(view);
-            view.calledResetFields = false;
-            view.calledShowError = false;
+            }
+            [Fact]
+            public void AddCategoryFailBadDescription()
+            {
+                //Arrange
+                TestView view = new TestView();
+                view.p = new Presenter(view);
+                view.calledResetFields = false;
+                view.calledShowError = false;
 
-            //Act
-            view.mockCategoryDescription = "ADescription";
-            view.mockCategoryType = -1;
-            view.p.AddCategory(view.mockCategoryDescription, view.mockCategoryType);
+                //Act
+                view.mockCategoryDescription = "";
+                view.mockCategoryType = 1;
+                view.p.AddCategory(view.mockCategoryDescription, view.mockCategoryType);
 
-            //Assert
-            Assert.True(view.calledShowError);
-            Assert.True(!view.calledResetFields);
+                //Assert
+                Assert.True(view.calledShowError);
+                Assert.True(!view.calledResetFields);
 
-        }
+            }
+            [Fact]
+            public void AddCategoryFailBadType()
+            {
+                //Arrange
+                TestView view = new TestView();
+                view.p = new Presenter(view);
+                view.calledResetFields = false;
+                view.calledShowError = false;
 
-        //
-        //      LEAVING
-        //
+                //Act
+                view.mockCategoryDescription = "ADescription";
+                view.mockCategoryType = -1;
+                view.p.AddCategory(view.mockCategoryDescription, view.mockCategoryType);
 
-        [Fact]
-        public void AskToLeaveCalled()
-        {
-            //Arrange
-            TestView view = new TestView();
-            view.p = new Presenter(view);
-            view.calledAskToLeave = false;
+                //Assert
+                Assert.True(view.calledShowError);
+                Assert.True(!view.calledResetFields);
 
-            //Act
-            view.p.Leaving();
+            }
 
-            //Assert
-            Assert.True(view.calledAskToLeave);
+            //
+            //      LEAVING
+            //
+
+            [Fact]
+            public void AskToLeaveCalled()
+            {
+                //Arrange
+                TestView view = new TestView();
+                view.p = new Presenter(view);
+                view.calledAskToLeave = false;
+
+                //Act
+                view.p.Leaving();
+
+                //Assert
+                Assert.True(view.calledAskToLeave);
+            }
+
+            [Fact] //iffy unit test, ask mrs helen when possible
+            public void OpenCatWindowFromEventsWindowAndAddCategory()
+            {
+                //Arrange
+                TestView view = new TestView();
+                view.p = new Presenter(view);
+                view.calledToCategoryFromEvent = false;
+
+                //Act
+                view.p.ToCategoryWindow();
+                view.mockCategoryDescription = "ACategory";
+                view.mockCategoryType = 1;
+                view.p.AddCategory(view.mockCategoryDescription, view.mockCategoryType);
+
+                //Assert
+                List<string> catlist = view.p.GetCategoryNames();
+                Assert.True(view.calledToCategoryFromEvent);
+                view.p.RemoveCategory(catlist.Count() - 1);
+            }
         }
     }
 }

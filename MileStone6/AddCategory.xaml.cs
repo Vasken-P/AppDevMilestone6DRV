@@ -150,5 +150,10 @@ namespace MileStone6Presenter
             CategoryTypes.SelectedIndex = -1;
 
         }
+
+        public void ToCategoryWindowFromEvents()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

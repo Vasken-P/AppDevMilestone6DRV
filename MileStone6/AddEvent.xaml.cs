@@ -112,13 +112,17 @@ namespace MileStone6Presenter
             throw new NotImplementedException();
         }
 
-        private void ConveniantAddCatButton_Click(object sender, RoutedEventArgs e)
+        public void ToCategoryWindowFromEvents()
         {
             EventGrid.IsHitTestVisible = false;
             AddCategory w = new AddCategory(this, p);
             w.Show();
 
-            //reinitialize category info
+            
+        }
+        private void ConveniantAddCatButton_Click(object sender, RoutedEventArgs e)
+        {
+            p.ToCategoryWindow();
         }
         public void ReturnToEventsWindow(Presenter presfromCat)
         {
