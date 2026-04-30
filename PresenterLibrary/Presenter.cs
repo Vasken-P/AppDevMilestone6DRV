@@ -7,7 +7,8 @@ namespace MileStone6Presenter
         private HomeCalendar _calendar;
 
 
-
+        private string _folderPath = "";
+        private string _fileName = "";
 
 
         private List<string> _typenames;
@@ -24,6 +25,25 @@ namespace MileStone6Presenter
             _typenames = new List<string>();
             _categorynames = new List<string>();
             _view = v;
+        }
+
+        public void ChooseFolder()
+        {
+                       _view.GetFolderName();
+        }
+
+        public void FolderChosen(string folder)
+        {
+            _folderPath = folder;
+            _view.GetFileName();
+        }
+
+        public void FileChosen(string fileName)
+        {
+            _fileName = fileName;
+            string fullPath = System.IO.Path.Combine(_folderPath, _fileName);
+            _calendar = new HomeCalendar(fullPath);
+            _view.DisplayCurrentFile(fullPath);
         }
 
 
