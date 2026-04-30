@@ -120,10 +120,6 @@ namespace MileStone6Presenter
             _calendar.events.Add(startingTime, categoryID, duration, details);
 
             _view.ShowMessage($"{details} event has been added");
-
-            // Choose ONE behavior depending on your UX:
-            _view.ResetFields();           // clears everything
-                                           // _view.KeepCategoryAndDate(); // keeps some selections
         }
 
         public void ToCategoryWindow()

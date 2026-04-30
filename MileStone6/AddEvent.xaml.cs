@@ -47,6 +47,8 @@ namespace MileStone6Presenter
         {
             eventDetails.Text = string.Empty;
             eventDuration.Text = string.Empty;
+            eventCategory.SelectedIndex = -1;
+            eventDate.SelectedDate = DateTime.ParseExact(defaultDate, "HH:mm dd/MM/yyyy", System.Globalization.CultureInfo.InvariantCulture);
         }
 
         public void DisplayCurrentFile(string fileName)
