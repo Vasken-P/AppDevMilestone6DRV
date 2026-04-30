@@ -7,7 +7,7 @@ namespace MileStone6Presenter
         private HomeCalendar _calendar;
 
 
-     
+
 
 
         private List<string> _typenames;
@@ -26,12 +26,12 @@ namespace MileStone6Presenter
             _view = v;
         }
 
-        
-            //========================
-            // CATEGORY
-            //========================
 
-            public void AddCategory(string description, int type)
+        //========================
+        // CATEGORY
+        //========================
+
+        public void AddCategory(string description, int type)
         {
             if (string.IsNullOrEmpty(description))
 
@@ -62,10 +62,6 @@ namespace MileStone6Presenter
             _view.ResetFields();
 
         }
-
-
-        
-        
 
         public void RemoveCategory(int id)
         {
@@ -135,24 +131,6 @@ namespace MileStone6Presenter
         public void RemoveEvent(int id)
         {
             _calendar.events.Delete(id);
-        }
-        public List<string> GetCategoryTypeNames()
-        {
-            typenames.Clear();
-            foreach (string type in Enum.GetNames<Category.CategoryType>())
-            {
-                typenames.Add(type);
-            }
-            return typenames;
-        }
-        public List<string> GetCategoryNames()
-        {
-            categorynames.Clear();
-            foreach (Category category in _calendar.categories.List())
-            {
-                categorynames.Add(category.Description);
-            }
-            return categorynames;
         }
         public void Leaving()
         {

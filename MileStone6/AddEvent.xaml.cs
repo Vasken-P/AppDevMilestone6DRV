@@ -7,7 +7,7 @@ namespace MileStone6Presenter
     public partial class AddEvent : Window, ViewInterface
     {
         private string defaultDate = DateTime.Today.ToString("dd-MM-yyyy");
-        private readonly Presenter p;
+        private Presenter p;
         public AddEvent()
         {
             InitializeComponent();
@@ -80,15 +80,16 @@ namespace MileStone6Presenter
         public int GetRepeatDays()
         {
 
-            int savedCategory = eventCategory.SelectedIndex;
-            DateTime? savedDate = eventDate.SelectedDate;
+            //int savedCategory = eventCategory.SelectedIndex;
+            //DateTime? savedDate = eventDate.SelectedDate;
 
-            eventDetails.Text = string.Empty;
-            eventDuration.Text = string.Empty;
+            //eventDetails.Text = string.Empty;
+            //eventDuration.Text = string.Empty;
 
-            eventCategory.SelectedIndex = savedCategory;
+            //eventCategory.SelectedIndex = savedCategory;
 
-            eventDate.SelectedDate = savedDate;
+            //eventDate.SelectedDate = savedDate;
+            return 1;
 
         }
 
@@ -111,7 +112,20 @@ namespace MileStone6Presenter
             throw new NotImplementedException();
         }
 
+        private void ConveniantAddCatButton_Click(object sender, RoutedEventArgs e)
+        {
+            EventGrid.IsHitTestVisible = false;
+            AddCategory w = new AddCategory(this, p);
+            w.Show();
 
+            //reinitialize category info
+        }
+        public void ReturnToEventsWindow(Presenter presfromCat)
+        {
+            p = presfromCat;
+            EventGrid.IsHitTestVisible = true;
+            eventCategory.ItemsSource = p.GetCategoryNames();
+        }
         //private void eventDuration_TextChanged(object sender, System.Windows.Controls.TextChangedEventArgs e)
         //{
         //    if (char.IsLetter(eventDuration.Text[eventDuration.Text.Length - 1]))
