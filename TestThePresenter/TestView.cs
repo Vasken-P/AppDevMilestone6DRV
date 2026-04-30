@@ -125,7 +125,7 @@ namespace TestThePresenter
                 //Arrange
                 //Act
                 TestView view = new TestView();
-                view.p = new Presenter(view);
+                view.p = new Presenter(view, "TestDBFile.db");
 
                 //Assert
                 Assert.IsType<Presenter>(view.p);
@@ -140,7 +140,7 @@ namespace TestThePresenter
             {
                 //Arrange
                 TestView view = new TestView();
-                view.p = new Presenter(view);
+                view.p = new Presenter(view, "TestDBFile.db");
                 view.calledResetFields = false;
                 view.calledResetFields = false;
 
@@ -163,7 +163,7 @@ namespace TestThePresenter
             {
                 //Arrange
                 TestView view = new TestView();
-                view.p = new Presenter(view);
+                view.p = new Presenter(view, "TestDBFile.db");
                 view.calledResetFields = false;
                 view.calledShowError = false;
 
@@ -183,7 +183,7 @@ namespace TestThePresenter
             {
                 //Arrange
                 TestView view = new TestView();
-                view.p = new Presenter(view);
+                view.p = new Presenter(view, "TestDBFile.db");
                 view.calledResetFields = false;
                 view.calledShowError = false;
 
@@ -203,7 +203,7 @@ namespace TestThePresenter
             {
                 //Arrange
                 TestView view = new TestView();
-                view.p = new Presenter(view);
+                view.p = new Presenter(view, "TestDBFile.db");
                 view.calledResetFields = false;
                 view.calledShowError = false;
 
@@ -228,7 +228,7 @@ namespace TestThePresenter
             {
                 //Arrange
                 TestView view = new TestView();
-                view.p = new Presenter(view);
+                view.p = new Presenter(view, "TestDBFile.db");
                 view.calledResetFields = false;
                 view.calledResetFields = false;
 
@@ -250,7 +250,7 @@ namespace TestThePresenter
             {
                 //Arrange
                 TestView view = new TestView();
-                view.p = new Presenter(view);
+                view.p = new Presenter(view, "TestDBFile.db");
                 view.calledResetFields = false;
                 view.calledShowError = false;
 
@@ -269,7 +269,7 @@ namespace TestThePresenter
             {
                 //Arrange
                 TestView view = new TestView();
-                view.p = new Presenter(view);
+                view.p = new Presenter(view, "TestDBFile.db");
                 view.calledResetFields = false;
                 view.calledShowError = false;
 
@@ -293,7 +293,7 @@ namespace TestThePresenter
             {
                 //Arrange
                 TestView view = new TestView();
-                view.p = new Presenter(view);
+                view.p = new Presenter(view, "TestDBFile.db");
                 view.calledAskToLeave = false;
 
                 //Act
@@ -308,7 +308,7 @@ namespace TestThePresenter
             {
                 //Arrange
                 TestView view = new TestView();
-                view.p = new Presenter(view);
+                view.p = new Presenter(view, "TestDBFile.db");
                 view.calledToCategoryFromEvent = false;
 
                 //Act
