@@ -37,11 +37,11 @@ namespace MileStone6Presenter
             }
         }
 
-   
+        #region Navigation / Event Handlers
         private void ToAddCategoryButton_Click(object sender, RoutedEventArgs e)
         {
             // Fixed: Removed duplicate variable declaration from merge
-            AddCategory w = new AddCategory(null, null, _databasePath);
+            AddCategory w = new AddCategory(_databasePath);
             w.Show();
             this.Close();
         }
@@ -57,7 +57,9 @@ namespace MileStone6Presenter
         {
             AskToLeave();
         }
+        #endregion
 
+        #region ViewInterface Implementation
 
         // General
         public void ShowMessage(string message)
@@ -143,5 +145,6 @@ namespace MileStone6Presenter
             this.Close();
         }
 
+        #endregion
     }
 }

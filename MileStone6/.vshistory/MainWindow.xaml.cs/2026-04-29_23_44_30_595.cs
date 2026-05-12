@@ -1,5 +1,13 @@
-﻿using System;
+﻿using System.Text;
 using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 using Microsoft.Win32;
 
 namespace MileStone6Presenter
@@ -12,11 +20,13 @@ namespace MileStone6Presenter
         private Presenter _presenter;
         private string _databasePath;
 
+
+
         public MainWindow()
         {
             InitializeComponent();
 
-            // First time setup logic
+            //First time setup here
             SaveFileDialog dialog = new SaveFileDialog();
             dialog.Title = "Choose or create a database file";
             dialog.Filter = "Database files (*.db)|*.db";
@@ -27,7 +37,10 @@ namespace MileStone6Presenter
             if (result == true)
             {
                 _databasePath = dialog.FileName;
+
+                // create presenter using DI 
                 _presenter = new Presenter(this, _databasePath);
+
                 MessageBox.Show("File selected: " + _databasePath);
             }
             else
@@ -35,13 +48,18 @@ namespace MileStone6Presenter
                 MessageBox.Show("You must select a file to continue.");
                 this.Close();
             }
+
         }
 
-   
+        public void ClearCategoryFields()
+        {
+            throw new NotImplementedException();
+        }
+
         private void ToAddCategoryButton_Click(object sender, RoutedEventArgs e)
         {
-            // Fixed: Removed duplicate variable declaration from merge
-            AddCategory w = new AddCategory(null, null, _databasePath);
+            AddCategory w = new AddCategory(_databasePath);
+            AddCategory w = new AddCategory(null, null);
             w.Show();
             this.Close();
         }
@@ -55,11 +73,17 @@ namespace MileStone6Presenter
 
         private void ToLeaveButton_Clicked(object sender, RoutedEventArgs e)
         {
-            AskToLeave();
+            MessageBoxResult result = MessageBox.Show("Would you like to leave", "Exit", button: MessageBoxButton.OKCancel);
+            if (result == MessageBoxResult.OK)
+            {
+                this.Close();
+            }
         }
 
+        // ======================== 
+        // ViewInterface METHODS 
+        // ======================== 
 
-        // General
         public void ShowMessage(string message)
         {
             MessageBox.Show(message);
@@ -67,80 +91,67 @@ namespace MileStone6Presenter
 
         public void ShowError(string message)
         {
-            MessageBox.Show(message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            MessageBox.Show(message, "Error");
         }
 
-        new public void Close() // 'new' to clarify we are implementing the interface method
+        public void Close()
         {
             base.Close();
         }
 
-        // File/Startup
         public void DisplayCurrentFile(string fileName)
         {
             this.Title = "Current file: " + fileName;
         }
 
-        public void GetFileName()
+        public string GetFileName()
         {
-            if (!string.IsNullOrEmpty(_databasePath))
-                System.IO.Path.GetFileName(_databasePath);
+            return System.IO.Path.GetFileName(_databasePath);
         }
 
-        public void GetFolderName()
+        public string GetFolderName()
         {
-            if (!string.IsNullOrEmpty(_databasePath))
-                System.IO.Path.GetDirectoryName(_databasePath);
+            return System.IO.Path.GetDirectoryName(_databasePath);
         }
 
-        public void OpenFileExplorer()
+        public string OpenFileExplorer()
         {
-            OpenFileDialog dialog = new OpenFileDialog();
+            SaveFileDialog dialog = new SaveFileDialog();
             dialog.Filter = "Database files (*.db)|*.db";
 
             if (dialog.ShowDialog() == true)
             {
                 _databasePath = dialog.FileName;
+                return _databasePath;
             }
+
+            return null;
         }
 
-        public void LoadLastUsedFile()
+        public string LoadLastUsedFile()
         {
-            // Placeholder for persistence logic
+            // Simple version (no persistence yet) 
+            return _databasePath;
         }
 
-        // Add Event Specifics
         public int GetRepeatDays()
         {
-            return 0; // Not applicable for MainWindow
+            return 0; // not used in MainWindow 
         }
 
         public void ResetFields()
         {
-            // No fields to reset on MainWindow
+            // nothing to reset here 
         }
 
-        // Closing & Navigation
         public void AskToLeave()
         {
-            MessageBoxResult result = MessageBox.Show("Would you like to leave?", "Exit", MessageBoxButton.OKCancel);
-            if (result == MessageBoxResult.OK)
-            {
-                this.Close();
-            }
+            ToLeaveButton_Clicked(null, null);
         }
 
         public void ConfirmUnsavedChanges()
         {
-            MessageBox.Show("You have unsaved changes.", "Warning", MessageBoxButton.OK, MessageBoxImage.Warning);
-        }
-
-        public void ToCategoryWindowFromEvents()
-        {
-            // Implementing missing interface method
-            AddCategory w = new AddCategory(null, null, _databasePath);
-            w.Show();
-            this.Close();
+            MessageBox.Show("You have unsaved changes.");
         }
 
     }

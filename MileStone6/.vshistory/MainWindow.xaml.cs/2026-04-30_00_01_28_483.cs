@@ -37,7 +37,7 @@ namespace MileStone6Presenter
             }
         }
 
-   
+        #region Navigation / Event Handlers
         private void ToAddCategoryButton_Click(object sender, RoutedEventArgs e)
         {
             // Fixed: Removed duplicate variable declaration from merge
@@ -57,7 +57,9 @@ namespace MileStone6Presenter
         {
             AskToLeave();
         }
+        #endregion
 
+        #region ViewInterface Implementation
 
         // General
         public void ShowMessage(string message)

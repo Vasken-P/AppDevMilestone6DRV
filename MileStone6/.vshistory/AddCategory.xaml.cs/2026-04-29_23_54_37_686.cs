@@ -7,9 +7,9 @@ namespace MileStone6Presenter
     public partial class AddCategory : Window, ViewInterface
     {
         public Presenter p;
-        public AddEvent sourceEventWindow = null;
+        public AddEvent? sourceEventWindow = null;
 
-        public AddCategory(AddEvent sourceEventWindow, Presenter presFromEvents, string databasePath)
+        public AddCategory(AddEvent? sourceEventWindow, Presenter? presFromEvents)
         {
             InitializeComponent();
 
@@ -22,7 +22,9 @@ namespace MileStone6Presenter
             }
             else
             {
-                p = new Presenter(this, databasePath);
+                // Note: You'll need to ensure your Presenter has a constructor 
+                // that accepts only the view if no path is provided.
+                p = new Presenter(this, "");
             }
 
             CategoryTypes.ItemsSource = p.GetCategoryTypeNames();

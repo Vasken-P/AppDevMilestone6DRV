@@ -1,22 +1,28 @@
-﻿<Window x:Class="MileStone6.MainWindow"
+﻿<Window x:Class="MileStone6Presenter.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:MileStone6"
+        xmlns:local="clr-namespace:MileStone6Presenter"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid Background="SteelBlue">
+        Title="MainWindow" Height="450" Width="600" MinHeight="450" MinWidth="400">
+
+    <Grid Background="LightSteelBlue">
+
         <Grid.RowDefinitions>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
+
+        <Button Background="DarkOrange" Content="X" Width="50" Height="50" Padding="10" Margin="10" VerticalAlignment="Top" HorizontalAlignment="Right" FontSize="20"  Click="ToLeaveButton_Clicked"></Button>
+
         <StackPanel Margin="20">
-            <TextBox Padding="10" Text="Welcome to your own Calendar App" TextAlignment="Center" Width=" 200" Height="75" FontSize="20" TextWrapping="Wrap"></TextBox>
+            <TextBox Padding="10" Text="Welcome to your own Calendar App" TextAlignment="Center" Width=" 250" Height="75" FontSize="20" TextWrapping="Wrap"></TextBox>
             <TextBox Text="Where to?" TextAlignment="Center" Width=" 100" Height=" 25" FontSize="15" TextWrapping="Wrap"></TextBox>
+
         </StackPanel>
-        <Button Background="IndianRed" Padding="10" Content="Add Event" Width=" 200" Height="75" FontSize="20" Grid.Row="1"></Button>
+        <Button Background="IndianRed" Padding="10" Content="Add Event" Width=" 200" Height="75" FontSize="20" Grid.Row="1" Click="ToAddEventButton_Click"></Button>
         <Button Background="PaleGreen" Padding="10" Content="Add Category" Width=" 200" Height="75" FontSize="20" Grid.Row="2" Click="ToAddCategoryButton_Click"></Button>
 
     </Grid>
