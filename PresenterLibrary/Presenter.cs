@@ -217,5 +217,30 @@ namespace MileStone6Presenter
         {
             _calendar.CloseDB();
         }
+
+        // making methods for the edit event part
+        public List<Event> GetEvents()
+        {
+            return _calendar.events.List();
+        }
+
+        public void EditEvent(int id, DateTime startTime, int categoryID, string durationText, string details)
+        {
+            if (string.IsNullOrEmpty(details))
+            {
+                _view.ShowError("Details cannot be empty");
+                return;
+            }
+
+            if (!int.TryParse(durationText, out int duration))
+            {
+                _view.ShowError("Duration must be a number");
+                return;
+            }
+
+            _calendar.events.Update(id, startTime, categoryID, duration, details);
+
+            _view.ShowMessage("Event updated");
+        }
     }
 }
