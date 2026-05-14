@@ -81,7 +81,18 @@
                 HorizontalAlignment="Left"
                 Click="Delete_Click"/>
 
-  
+        
+        <TextBlock Text="Last Action:"
+                   Margin="15,355,0,0"
+                   FontWeight="Bold"
+                   VerticalAlignment="Top"/>
+
+        <TextBlock x:Name="ActionText"
+                   Margin="15,375,0,0"
+                   VerticalAlignment="Top"
+                   />
+
+
 
     </Grid>
 </Window>
