@@ -224,7 +224,7 @@ namespace MileStone6Presenter
             return _calendar.events.List();
         }
 
-        public void EditEvent(int id, DateTime startTime, int categoryID, string durationText, string details)
+        public void EditEvent(int id,DateTime startTime,int categoryID,string durationText,string details)
         {
             if (string.IsNullOrEmpty(details))
             {
@@ -238,9 +238,9 @@ namespace MileStone6Presenter
                 return;
             }
 
-            _calendar.events.Update(id, startTime, categoryID, duration, details);
+            _calendar.events.Update(id,startTime,categoryID,duration,details);
 
-            _view.ShowMessage("Event updated");
+            _view.ShowMessage("Updated successfully");
         }
     }
 }
