@@ -1,0 +1,87 @@
+﻿<Window x:Class="MileStone6.EditEvent"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MileStone6"
+        mc:Ignorable="d"
+        Title="EditEvent" Height="450" Width="260">
+    <Grid Background="PapayaWhip">
+
+        <Label Content="Update Event"
+               HorizontalAlignment="Center"
+               Margin="0,15,0,0"
+               VerticalAlignment="Top"
+               FontWeight="Bold"
+               FontSize="16"/>
+
+        <Label Content="Date"
+               Margin="15,50,0,0"
+               VerticalAlignment="Top"/>
+
+        <DatePicker x:Name="eventDate"
+                    Margin="15,70,15,0"
+                    Height="25"
+                    VerticalAlignment="Top"/>
+
+        
+        <Label Content="Category"
+               Margin="15,105,0,0"
+               VerticalAlignment="Top"/>
+
+        <ComboBox x:Name="eventCategory"
+                  Margin="15,125,15,0"
+                  Height="25"
+                  VerticalAlignment="Top"/>
+
+        <Label Content="Description"
+               Margin="15,160,0,0"
+               VerticalAlignment="Top"/>
+
+        <TextBox x:Name="eventDetails"
+                 Margin="15,180,15,0"
+                 Height="50"
+                 VerticalAlignment="Top"
+                 TextWrapping="Wrap"/>
+
+       
+        <Label Content="Duration"
+               Margin="15,240,0,0"
+               VerticalAlignment="Top"/>
+
+        <TextBox x:Name="eventDuration"
+                 Margin="15,260,15,0"
+                 Height="25"
+                 VerticalAlignment="Top"/>
+
+     
+        <Button Content="Update"
+                x:Name="UpdateButton"
+                Width="60"
+                Height="30"
+                Margin="15,310,0,0"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Click="Update_Click"
+                />
+
+        <Button Content="Cancel"
+                Width="60"
+                Height="30"
+                Margin="95,310,0,0"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Click="Cancel_Click"/>
+
+        <Button Content="Delete"
+                Width="60"
+                Height="30"
+                Margin="175,310,0,0"
+                VerticalAlignment="Top"
+                HorizontalAlignment="Left"
+                Click="Delete_Click"/>
+
+  
+
+    </Grid>
+</Window>
