@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MileStone6Presenter;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,11 +18,13 @@ namespace MileStone6
     /// <summary>
     /// Interaction logic for EditEvent.xaml
     /// </summary>
-    public partial class EditEvent : Window
+    public partial class EditEvent : Window , ViewInterface
     {
+        private Presenter _presenter;
         public EditEvent()
         {
             InitializeComponent();
+            
         }
     }
 }

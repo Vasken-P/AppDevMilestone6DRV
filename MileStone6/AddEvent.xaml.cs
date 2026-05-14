@@ -141,6 +141,7 @@ namespace MileStone6Presenter
             this.p = presfromCat;
             EventGrid.IsHitTestVisible = true;
             eventCategory.ItemsSource = p.GetCategoryNames();
+            
         }
     }
 }
